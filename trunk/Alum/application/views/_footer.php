@@ -26,7 +26,7 @@
 		<script src=<?php echo URL::base()."/scripts/jquery.bootstrap.wizard.js" ?>></script>
 		<script src=<?php echo URL::base()."/scripts/prettify.js" ?>></script>
 		<script src=<?php echo URL::base()."/scripts/jquery.validate.min.js" ?>></script>
-		<script src=<?php echo URL::base()."/scripts/custom-wizard.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/custom/newalum.js" ?>></script>
 	
 		<!-- Charts  =============================-->
 		<script src=<?php echo URL::base()."/scripts/charts/jquery.flot.js" ?>></script>
