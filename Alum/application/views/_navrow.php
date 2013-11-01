@@ -1,9 +1,12 @@
+<?php
+$_category = Request::current()->param('category');
+$_title = Request::current()->param('title');
+?>
 <div class="row">
 	<div class="col-mod-12">
 		<ul class="breadcrumb">
-			<li><a href="index-2.html">Archon Admin</a></li>
-			<li><a href="index-2.html">Dashboard</a></li>
-			<li class="active">Bread Crumb</li>
+			<li class="active"><?php echo $_category?></li>
+			<li class="active"><?php echo $_title?></li>
 		</ul>
 	</div>
 </div>

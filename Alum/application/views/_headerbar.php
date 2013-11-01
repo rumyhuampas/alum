@@ -126,7 +126,9 @@
 				<li>
 					<i class="icon-user avatar"></i>
 					<div class="message">
-						<span class="username">Perfil</span> 
+						<span class="username">
+							<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'index')); ?>>Perfil</a>
+						</span> 
 					</div>
 				</li>
 				<li>

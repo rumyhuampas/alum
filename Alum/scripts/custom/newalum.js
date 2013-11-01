@@ -11,11 +11,6 @@ $(document).ready(function() {
 		    },
 		    email: {
 		      	email: true
-		    },
-		    urlfield: {
-		      	required: true,
-		      	minlength: 3,
-		      	url: true
 		    }
 		},
 		messages: {
@@ -57,6 +52,16 @@ $(document).ready(function() {
   				$validator.focusInvalid();
   				return false;
   			}
+  		},
+  		'onTabChange': function(tab, navigation, index) {
+  			nameval = $('#name').valid();
+			ageval = $('#age').valid();
+			if(nameval == true && ageval == true){
+				$('#btnsave').removeClass('hidden');
+			}
+			else{
+				$('#btnsave').addClass('hidden');
+			}
   		}
   	});
 });

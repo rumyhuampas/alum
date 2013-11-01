@@ -12,6 +12,7 @@
 		<!-- Loading Stylesheets -->    
 		<link href=<?php echo URL::base()."/assets/css/archon.css" ?> rel="stylesheet" type="text/css" />
 		<link href=<?php echo URL::base()."/assets/css/responsive.css" ?> rel="stylesheet" type="text/css" />
+		<link href=<?php echo URL::base()."/assets/css/timeline.css" ?> rel="stylesheet" type="text/css" />
 		<link href=<?php echo URL::base()."/assets/css/prettify.css" ?> rel="stylesheet" type="text/css" />
 		<link href=<?php echo URL::base()."/assets/css/fullcalendar.css" ?> rel="stylesheet" type="text/css" />
 	
