@@ -12,16 +12,6 @@
 				<?php include Kohana::find_file('views', '_navrow'); ?>
 
 				<?php include Kohana::find_file('views', '_msgrow'); ?>
-
-				<div class="row">
-					<div class="col-mod-12">
-						<ul class="breadcrumb">
-							<li><a href="index-2.html">Dashboard</a></li>
-							<li><a href="form-wizard.html">Form Wizard</a></li>
-							<li class="active">Bread Crumb</li>
-						</ul>
-					</div>
-				</div>
 				
 				<!-- Form Wizard -->
 				<div class="row">
@@ -34,8 +24,8 @@
 									<div id="rootwizard" class="wizard">
 										<ul>
 											<li><a href="#tab1" data-toggle="tab"><span class="badge">1</span> Alumno</a></li>
-											<li><a href="#tab2" data-toggle="tab"><span class="badge">2</span> contacto</a></li>
-											<li><a href="#tab3" data-toggle="tab"><span class="badge">3</span> adicional</a></li>
+											<li><a href="#tab2" data-toggle="tab"><span class="badge">2</span> Info de contacto</a></li>
+											<li><a href="#tab3" data-toggle="tab"><span class="badge">3</span> Info adicional</a></li>
 											<li><a href="#tab4" data-toggle="tab"><span class="badge">4</span> Finalizar</a></li>
 										</ul>
 										<div class="tab-content">
@@ -139,7 +129,12 @@
 													<dd id="finishtel2"></dd>
 													<dt>Telefono 3</dt>
 													<dd id="finishtel3"></dd>
-												</dl>															
+												</dl>
+												<div class="pull-right">
+													<?php echo Form::button('btnsave', 'Guardar', array('class' => 'btn btn-primary', 'id' => 'btnsave')); ?>
+												</div>			
+												<br />
+												<br />												
 											</div>
 											<ul class="pager wizard">
 												<li class="previous first hidden"><a href="#">First</a></li>
