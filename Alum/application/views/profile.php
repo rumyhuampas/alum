@@ -21,18 +21,18 @@
 						<div class="profile-info">
 							<img src=<?php echo URL::base()."/assets/images/theme/avatarAgus2x.png" ?> class="avatar" alt="" >
 							<h2 class="name">Agustina Molina Hernando</h2>
-							<a href="#" class="pull-right"><i class="icon-edit"></i> Edit Profile</a>
+							<a href="#" class="pull-right"><i class="icon-edit"></i> Editar perfil</a>
 							<ul class="options list-inline">
-								<li><a href="#"><i class="icon-picture"></i> Web Designer</a></li>
-								<li><a href="#"><i class="icon-twitter"></i> @tbguru</a></li>
-								<li><a href="#"><i class="icon-time"></i> Member Since Aug 2013</a></li>
+								<li><a href="#"><i class="icon-picture"></i> Futura Dentista</a></li>
+								<li><a href="https://www.facebook.com/agustina.molinahernando"><i class="icon-facebook"></i> agustina.molinahernando</a></li>
+								<li><a href="#"><i class="icon-time"></i> Directora general</a></li>
 							</ul>
 							<hr>
 
 							<div class="row profile-posts-block">
 								<!-- First Column---------------------------->
-								<div class="col-md-6">
-
+								<div class="col-md-12">
+									
 									<div class="panel write-post">
 										<div class="panel-body">
 											<form method="post">
@@ -74,79 +74,6 @@
 										</div>
 										<div class="panel-body">
 											<p class="post-message">My new pet, OMG she is soooo adorable. </p>
-											<img src="http://placehold.it/350x250&amp;text=Dog" alt="">
-										</div>
-										<div class="panel-footer">
-											<div class="butto-group btn-group-justified">
-												<a href="#" class="btn btn-default disabled"><i class="icon-thumbs-up"></i> 20  &nbsp; <i class="icon-comment"></i>100</a>
-												<a href="#" class="btn btn-default"> like</a>
-												<a href="#" class="btn btn-default"> Comment</a>
-											</div>
-										</div>
-									</div><!-- /Wall Post -->
-
-
-									<!-- Wall Post -->
-									<div class="panel panel-wall-post">
-										<div class="panel-heading">
-											<img src="images/theme/avatarThree.png" alt="" class="avatar">
-											<div class="message">
-												<span class="username">Akasa Ram</span> 
-												<span class="location">(Australia)</span> 
-												<div class="btn-group pull-right">
-													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<i class="icon-cog"></i>
-													</button>
-													<ul class="dropdown-menu" role="menu">
-														<li><a href="#">Report Spam</a></li>
-														<li><a href="#">Share Post</a></li>
-														<li><a href="#">Embed Post</a></li>
-														<li class="divider"></li>
-														<li><a href="#">Delete Post</a></li>
-													</ul>
-												</div>
-												<div class="time "><i class="icon-time"> </i> 06:58 PM</div>
-											</div>
-										</div>
-										<div class="panel-body">
-											<p class="post-message"> I like to hang out to night. Can I expect any of you. The party is at Kunar, Desil
-												<br /> <a href="#" class="post-link" > <i class="icon-map-marker"></i> Download location </a>
-											</p>
-										</div>
-										<div class="panel-footer">
-											<div class="butto-group btn-group-justified">
-												<a href="#" class="btn btn-default disabled"><i class="icon-thumbs-up"></i> 15  &nbsp; <i class="icon-comment"></i>2</a>
-												<a href="#" class="btn btn-default"> like</a>
-												<a href="#" class="btn btn-default"> Comment</a>
-											</div>
-										</div>
-									</div><!-- /Wall Post -->
-
-
-									<!-- Wall Post -->
-									<div class="panel panel-wall-post">
-										<div class="panel-heading">
-											<img src="images/theme/avatarTwo.png" alt="" class="avatar">
-											<div class="message">
-												<span class="username">Budia Gor</span> 
-												<span class="location">(India)</span> 
-												<div class="btn-group pull-right">
-													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<i class="icon-cog"></i>
-													</button>
-													<ul class="dropdown-menu" role="menu">
-														<li><a href="#">Report Spam</a></li>
-														<li><a href="#">Share Post</a></li>
-														<li><a href="#">Embed Post</a></li>
-														<li class="divider"></li>
-														<li><a href="#">Delete Post</a></li>
-													</ul>
-												</div>
-												<div class="time "><i class="icon-time"> </i> 06:58 PM</div>
-											</div>
-										</div>
-										<div class="panel-body">
-											<img src="http://placehold.it/350x250&amp;text=stunt+Dog" alt="">
 										</div>
 										<div class="panel-footer">
 											<div class="butto-group btn-group-justified">
@@ -159,79 +86,6 @@
 
 								</div><!--First Column-->
 								
-								<!-- Second Column---------------------------->
-								<div class="col-md-6">
-
-									<!-- Wall Post -->
-									<div class="panel panel-wall-post">
-										<div class="panel-heading">
-											<img src="images/theme/avatarTwo.png" alt="" class="avatar">
-											<div class="message">
-												<span class="username">Budia Gor</span> 
-												<span class="location">(India)</span> 
-												<div class="btn-group pull-right">
-													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<i class="icon-cog"></i>
-													</button>
-													<ul class="dropdown-menu" role="menu">
-														<li><a href="#">Report Spam</a></li>
-														<li><a href="#">Share Post</a></li>
-														<li><a href="#">Embed Post</a></li>
-														<li class="divider"></li>
-														<li><a href="#">Delete Post</a></li>
-													</ul>
-												</div>
-												<div class="time "><i class="icon-time"> </i> 06:58 PM</div>
-											</div>
-										</div>
-										<div class="panel-body">
-											<p class="post-message">My recent animation. What do you think guys?</p>
-											<iframe src="http://player.vimeo.com/video/50522981" width="100%" height="270" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-										</div>
-										<div class="panel-footer">
-											<div class="butto-group btn-group-justified">
-												<a href="#" class="btn btn-default disabled"><i class="icon-thumbs-up"></i> 2 K  &nbsp; <i class="icon-comment"></i> 2,765</a>
-												<a href="#" class="btn btn-default"> like</a>
-												<a href="#" class="btn btn-default"> Comment</a>
-											</div>
-										</div>
-									</div><!-- /Wall Post -->
-
-									<!-- Wall Post -->
-									<div class="panel panel-wall-post">
-										<div class="panel-heading">
-											<img src="images/theme/avatarTwo.png" alt="" class="avatar">
-											<div class="message">
-												<span class="username">Budio Gor</span> 
-												<span class="location">(India)</span> 
-												<div class="btn-group pull-right">
-													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<i class="icon-cog"></i>
-													</button>
-													<ul class="dropdown-menu" role="menu">
-														<li><a href="#">Report Spam</a></li>
-														<li><a href="#">Share Post</a></li>
-														<li><a href="#">Embed Post</a></li>
-														<li class="divider"></li>
-														<li><a href="#">Delete Post</a></li>
-													</ul>
-												</div>
-												<div class="time "><i class="icon-time"> </i> 06:58 PM</div>
-											</div>
-										</div>
-										<div class="panel-body">
-											<img src="http://placehold.it/350x250&amp;text=Sneeker" alt="">
-										</div>
-										<div class="panel-footer">
-											<div class="butto-group btn-group-justified">
-												<a href="#" class="btn btn-default disabled"><i class="icon-thumbs-up"></i> 20  &nbsp; <i class="icon-comment"></i>100</a>
-												<a href="#" class="btn btn-default"> like</a>
-												<a href="#" class="btn btn-default"> Comment</a>
-											</div>
-										</div>
-									</div><!-- /Wall Post -->
-
-								</div><!--Second Column-->
 							</div><!--row profile-posts-block-->
 						</div><!--profile-info-->
 					</div><!--col-md-8 profile-body-->

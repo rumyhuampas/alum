@@ -37,7 +37,7 @@
 														<tr>
 															<th class="visible-lg">#</th>
 															<th>Avatar</th>
-															<th class="visible-lg">Nombre</th>
+															<th>Nombre</th>
 															<th class="visible-lg">Edad</th>
 															<th class="visible-lg">Telefono</th>
 															<th class="visible-lg">Direccion</th>
