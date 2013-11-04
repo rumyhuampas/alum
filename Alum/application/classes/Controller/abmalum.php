@@ -8,6 +8,7 @@ class Controller_ABMAlum extends Controller {
 		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
 		//$view->_menuid = Helpers_Const::MENUINICIOID;
 		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
+		$view->_alumnos = Helpers_Students::get();
 		$this->response->body($view->render());
 	}
 	
@@ -19,6 +20,41 @@ class Controller_ABMAlum extends Controller {
 			//$view->_menuid = Helpers_Const::MENUINICIOID;
 			//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 			$this->response->body($view->render());
+		}
+		else{
+			$std = ORM::factory('student');
+			$std->Name = $_POST['name'];
+			$std->Birth = date('Y-m-d', strtotime($_POST['day'].'-'.$_POST['month'].'-'.$_POST['year']));
+			$std->Obs = $_POST['obs'];
+			$std->Father = $_POST['father'];
+			$std->Mother = $_POST['mother'];
+			$std->Contact = $_POST['contact'];
+			$std->Phone1 = $_POST['phone1'];
+			$std->Phone2 = $_POST['phone2'];
+			$std->Phone3 = $_POST['phone3'];
+			$std->Address = $_POST['address'];
+			$std->City = $_POST['city'];
+			$std->State = $_POST['state'];
+			$std->Email = $_POST['email'];
+			$std->CreatedAt = DB::expr('Now()');
+			$std->ModifiedOn = DB::expr('Now()');
+			$std->create();
+			
+			HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
+				'msgtype' => 'alert-success', 'msgtext' => 'Alumno agregado con exito.')));
+		}
+	}
+
+	public function action_edit()
+	{
+		if(!isset($_POST['name'])){
+			$alum = Helpers_Students::get($_POST['alumid']);
+			$view=View::factory('editalum');
+			$view->_alum = $alum;
+			$this->response->body($view->render());
+		}
+		else{
+			
 		}
 	}
 

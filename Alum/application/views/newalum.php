@@ -39,9 +39,15 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<?php echo Form::label('age', 'Edad', array('class' => 'col-lg-1 control-label')); ?>
-													<div class="col-lg-11">
-														<?php echo Form::input('age', '', array('type' => 'number', 'id' => 'age', 'class' => 'form-control')); ?>
+													<?php echo Form::label('birth', 'Fecha de nacimiento', array('class' => 'col-lg-1 control-label')); ?>
+													<div class="col-lg-1">
+														<?php echo Form::select('day', Helpers_Combos::getBirthDays(),'', array('id' => 'day', 'class' => 'form-control')); ?>
+													</div>
+													<div class="col-lg-1">
+														<?php echo Form::select('month', Helpers_Combos::getBirthMonths(), '', array('id' => 'month', 'class' => 'form-control')); ?>
+													</div>
+													<div class="col-lg-2">
+														<?php echo Form::select('year', Helpers_Combos::getBirthYears(), '', array('id' => 'year', 'class' => 'form-control')); ?>
 													</div>
 												</div>
 												<div class="form-group">
@@ -119,8 +125,8 @@
 												<dl class="dl-horizontal">
 													<dt>Nombre del alumno</dt>
 													<dd id="finishname"></dd>
-													<dt>Edad</dt>
-													<dd id="finishage"></dd>
+													<dt>Fecha de nacimiento</dt>
+													<dd id="finishbirth"></dd>
 													<dt>Observaciones</dt>
 													<dd id="finishobs"></dd>
 													<dt>Telefono 1</dt>
@@ -150,39 +156,6 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Modal --
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								<h5 class="modal-title">Panel Settings</h5>
-								<span class="small">Some sort of settings with a form</span>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal" role="form">
-									<div class="form-group">
-										<label for="inputEmail1" class="col-lg-2 control-label">Label</label>
-										<div class="col-lg-10">
-											<input type="email" class="form-control" id="inputEmail12" placeholder="Label">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="inputPassword1" class="col-lg-2 control-label">Second Label</label>
-										<div class="col-lg-10">
-											<input type="text" class="form-control" id="inputPassword1" placeholder="Label two">
-										</div>
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save changes</button>
-							</div>
-						</div><!-- /.modal-content --
-					</div><!-- /.modal-dialog --
-				</div><!-- /.modal -->
 	
 			</div><!-- /Main Content  @7 -->
 	

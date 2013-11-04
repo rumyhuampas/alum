@@ -2,7 +2,9 @@
 	<div class="wrapper">
 
 		<!-- Replace the src of the image with your logo -->
-		<a href="index-2.html" class="logo"><img src=<?php echo URL::base()."/assets/images/logo2.png" ?> alt="Archon Admin" /></a>
+		<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'home', 'action' => 'index')); ?> class="logo">
+			<img src=<?php echo URL::base()."/assets/images/logo2.png" ?> alt="Archon Admin" />
+		</a>
 		<ul class="nav  nav-list">
 
 			<!-- sidebar input search box -->
