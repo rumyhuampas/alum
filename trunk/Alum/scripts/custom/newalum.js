@@ -31,13 +31,13 @@ $(document).ready(function() {
 	
 	$('.form-control').change(function(){
 		nameval = $('#name').val();
-		ageval = $('#age').val();
+		birthval = $('#day').val() + '/' + $('#month').val() + '/' + $('#year').val();;
 		obsval = $('#obs').val();
 		tel1val = $('#tel1').val();
 		tel2val = $('#tel2').val();
 		tel3val = $('#tel3').val();
 		$('#finishname').text(nameval);
-		$('#finishage').text(ageval);
+		$('#finishbirth').text(birthval);
 		$('#finishobs').text(obsval);
 		$('#finishtel1').text(tel1val);
 		$('#finishtel2').text(tel2val);
@@ -55,8 +55,9 @@ $(document).ready(function() {
   		},
   		'onTabChange': function(tab, navigation, index) {
   			nameval = $('#name').valid();
-			ageval = $('#age').valid();
-			if(nameval == true && ageval == true){
+			//ageval = $('#age').valid();
+			if(nameval == true){ 
+				//&& ageval == true){
 				$('#btnsave').removeClass('hidden');
 			}
 			else{

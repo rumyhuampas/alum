@@ -36,6 +36,7 @@
 			<script src=<?php echo URL::base()."/scripts/prettify.js" ?>></script>
 			<script src=<?php echo URL::base()."/scripts/jquery.validate.min.js" ?>></script>
 			<script src=<?php echo URL::base()."/scripts/custom/newalum.js" ?>></script>
+			<script src=<?php echo URL::base()."/scripts/custom/listalum.js" ?>></script>
 		<?php
 		}
 		?>
