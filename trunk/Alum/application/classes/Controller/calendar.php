@@ -8,6 +8,7 @@ class Controller_Calendar extends Controller {
 		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
 		//$view->_menuid = Helpers_Const::MENUINICIOID;
 		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
+		$view->_alumnos = Helpers_Students::get();
 		$this->response->body($view->render());
 	}
 
