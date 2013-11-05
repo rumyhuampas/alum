@@ -24,7 +24,7 @@ class Controller_ABMAlum extends Controller {
 		else{
 			$std = ORM::factory('student');
 			$std->Name = $_POST['name'];
-			$std->Birth = date('Y-m-d', strtotime($_POST['day'].'-'.$_POST['month'].'-'.$_POST['year']));
+			$std->Birth = date('Y-m-d', strtotime($_POST['year'].'-'.$_POST['month'].'-'.$_POST['day']));
 			$std->Obs = $_POST['obs'];
 			$std->Father = $_POST['father'];
 			$std->Mother = $_POST['mother'];
@@ -54,8 +54,35 @@ class Controller_ABMAlum extends Controller {
 			$this->response->body($view->render());
 		}
 		else{
+			$std = Helpers_Students::get($_POST['alumid']);
+			$std->Name = $_POST['name'];
+			$std->Birth = date('Y-m-d', strtotime($_POST['year'].'-'.$_POST['month'].'-'.$_POST['day']));
+			$std->Obs = $_POST['obs'];
+			$std->Father = $_POST['father'];
+			$std->Mother = $_POST['mother'];
+			$std->Contact = $_POST['contact'];
+			$std->Phone1 = $_POST['phone1'];
+			$std->Phone2 = $_POST['phone2'];
+			$std->Phone3 = $_POST['phone3'];
+			$std->Address = $_POST['address'];
+			$std->City = $_POST['city'];
+			$std->State = $_POST['state'];
+			$std->Email = $_POST['email'];
+			$std->ModifiedOn = DB::expr('Now()');
+			$std->update();
 			
+			HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
+				'msgtype' => 'alert-success', 'msgtext' => 'Alumno modificado con exito.')));
 		}
+	}
+
+	public function action_delete()
+	{
+		$alum = Helpers_Students::get($_POST['alumid']);
+		$alum->delete();
+		
+		HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
+			'msgtype' => 'alert-success', 'msgtext' => 'Alumno eliminado con exito.')));
 	}
 
 } // End Welcome

@@ -52,13 +52,17 @@
 									                    			echo "<td>".$alumno->Id."</td>";
 																	echo "<td>".$alumno->Avatar."</td>";
 																	echo "<td>".$alumno->Name."</td>";
-																	echo "<td>".$alumno->Birth."</td>";
+																	echo "<td>".date("d-m-Y", strtotime($alumno->Birth))."</td>";
 																	echo "<td>".$alumno->Phone1." / ".$alumno->Phone1." / ".$alumno->Phone3."</td>";
 																	echo "<td>".$alumno->Address."</td>";
 																	echo '<td>';
-																		echo Form::open('abmalum/edit', array('method' => 'POST'));
+																		echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-2'));
 									                            		echo Form::hidden('alumid', $alumno->Id);
 																		echo "<button class='btn btn-info' type='button' name='editalum'><i class='icon-edit'></i></button>";
+																		echo Form::close();
+																		echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-2'));
+									                            		echo Form::hidden('alumid', $alumno->Id);
+																		echo "<button class='btn btn-info' type='button' name='deletealum'><i class='icon-remove'></i></button>";
 																		echo Form::close();	
 																	echo '</td>';
 																echo "</tr>";
@@ -76,6 +80,8 @@
 						</div>
 					</div>
 				</div>
+				 
+				<?php include Kohana::find_file('views', '_dlgyesno'); ?>
 	
 			</div><!-- /Main Content  @7 -->
 	
