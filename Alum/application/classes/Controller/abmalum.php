@@ -38,6 +38,7 @@ class Controller_ABMAlum extends Controller {
 			$std->Email = $_POST['email'];
 			$std->CreatedAt = DB::expr('Now()');
 			$std->ModifiedOn = DB::expr('Now()');
+			$std->Active = 'Y';
 			$std->create();
 			
 			HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
@@ -78,11 +79,24 @@ class Controller_ABMAlum extends Controller {
 
 	public function action_delete()
 	{
-		$alum = Helpers_Students::get($_POST['alumid']);
-		$alum->delete();
+		$std = Helpers_Students::get($_POST['alumid']);
+		$std->Active = 'N';
+		$std->ModifiedOn = DB::expr('Now()');
+		$std->update();
 		
 		HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 			'msgtype' => 'alert-success', 'msgtext' => 'Alumno eliminado con exito.')));
+	}
+	
+	public function action_reactivate()
+	{
+		$std = Helpers_Students::get($_POST['alumid']);
+		$std->Active = 'Y';
+		$std->ModifiedOn = DB::expr('Now()');
+		$std->update();
+		
+		HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
+			'msgtype' => 'alert-success', 'msgtext' => 'Alumno reactivado con exito.')));
 	}
 
 } // End Welcome

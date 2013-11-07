@@ -35,7 +35,7 @@ $(document).ready(function() {
 				right: 'month,agendaWeek,agendaDay'
 			},
 			defaultView: 'agendaWeek',
-			allDaySlot: true,
+			allDaySlot: false,
 			allDayText: 'Todo el dia',
 			firstHour: 8,
 			slotMinutes: 30,
