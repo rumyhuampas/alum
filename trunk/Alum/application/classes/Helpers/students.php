@@ -10,4 +10,8 @@ class Helpers_Students {
 			return ORM::factory('student')->order_by('name')->find_all();
 		}
 	}
+	
+	public static function getActives(){
+		return ORM::factory('student')->where('Active', '=', 'Y')->order_by('name')->find_all();
+	}
 }

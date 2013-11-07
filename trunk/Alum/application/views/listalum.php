@@ -21,7 +21,7 @@
 								
 								<div class="row">
 									<div class="col-md-12">
-										<div class="panel panel-users">
+										<div class="panel panel-primary">
 											<div class="panel-heading">
 												<h3 class="panel-title">Alumnos
 													<span class="pull-right">
@@ -32,11 +32,17 @@
 												</h3>
 											</div>
 											<div class="panel-body">
-												<table class="table users-table table-condensed table-hover ">
+												<div class="controls">
+													<div class="col-lg-9">
+														<label class="checkbox-inline">
+															<input type="checkbox" value="showall" id="chbshowall"> Mostrar eliminados
+														</label>
+													</div>
+												</div>
+												<table id="studenttable" class="table users-table table-condensed table-hover ">
 													<thead>
 														<tr>
 															<th class="visible-lg">#</th>
-															<th>Avatar</th>
 															<th>Nombre</th>
 															<th class="visible-lg">Edad</th>
 															<th class="visible-lg">Telefono</th>
@@ -48,22 +54,29 @@
 														<?php
 									                    if(isset($_alumnos)){
 									                    	foreach($_alumnos as $alumno){
-									                    		echo "<tr>";
+									                    		echo "<tr active='".$alumno->Active."'>";
 									                    			echo "<td>".$alumno->Id."</td>";
-																	echo "<td>".$alumno->Avatar."</td>";
 																	echo "<td>".$alumno->Name."</td>";
 																	echo "<td>".date("d-m-Y", strtotime($alumno->Birth))."</td>";
 																	echo "<td>".$alumno->Phone1." / ".$alumno->Phone1." / ".$alumno->Phone3."</td>";
 																	echo "<td>".$alumno->Address."</td>";
 																	echo '<td>';
-																		echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-2'));
-									                            		echo Form::hidden('alumid', $alumno->Id);
-																		echo "<button class='btn btn-info' type='button' name='editalum'><i class='icon-edit'></i></button>";
-																		echo Form::close();
-																		echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-2'));
-									                            		echo Form::hidden('alumid', $alumno->Id);
-																		echo "<button class='btn btn-info' type='button' name='deletealum'><i class='icon-remove'></i></button>";
-																		echo Form::close();	
+																		if($alumno->Active == 'Y'){
+																			echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-2'));
+										                            		echo Form::hidden('alumid', $alumno->Id);
+																			echo "<button class='btn btn-info' type='button' name='editalum'><i class='icon-edit'></i></button>";
+																			echo Form::close();
+																			echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-2'));
+										                            		echo Form::hidden('alumid', $alumno->Id);
+																			echo "<button class='btn btn-info' type='button' name='deletealum'><i class='icon-remove'></i></button>";
+																			echo Form::close();	
+																		}
+																		else{
+																			echo Form::open('abmalum/reactivate', array('method' => 'POST', 'class' => 'col-lg-2'));
+										                            		echo Form::hidden('alumid', $alumno->Id);
+																			echo "<button class='btn btn-info' type='button' name='reactivatealum'><i class='icon-ok'></i></button>";
+																			echo Form::close();
+																		}	
 																	echo '</td>';
 																echo "</tr>";
 									                    	}

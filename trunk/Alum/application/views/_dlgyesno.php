@@ -10,7 +10,7 @@
 			<div class="modal-body" id="dlgtext">
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" id="dlgbtnyes">Yes</button>
+				<button type="button" class="btn btn-primary" id="dlgbtnyes">Si</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
 			</div>
 		</div><!-- /.modal-content -->
