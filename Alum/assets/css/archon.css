@@ -321,6 +321,31 @@ body a:hover {
     background-color: #428bca;
     outline: 0;
 }
+.dropdown-menu>li>form{
+	padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+}
+.dropdown-menu>li>form>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #333;
+    white-space: nowrap;
+}
+.dropdown-menu>li>form>a:hover, .dropdown-menu>li>form>a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #428bca;
+}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #428bca;
+    outline: 0;
+}
 .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:hover, .dropdown-menu>.disabled>a:focus {
     color: #999;
 }
@@ -2568,6 +2593,16 @@ ul.recent-activity>li ul.recent-activity li .message p {
     border: 0;
 }
 .panel.write-post .post-type .button-group a.btn-success {
+    color: #edf0f2;
+    background-color: #2eb398;
+}
+.panel.write-post .post-type .button-group button {
+    font-size: 20px;
+    color: #6a7686;
+    background-color: #eaedf1;
+    border: 0;
+}
+.panel.write-post .post-type .button-group button.btn-success {
     color: #edf0f2;
     background-color: #2eb398;
 }

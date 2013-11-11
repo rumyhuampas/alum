@@ -40,6 +40,26 @@
 		<?php
 		}
 		?>
+		
+		<?php
+		if(Request::current()->controller() == 'Profile'){
+		?>
+			<!-- Profile Scripts-->
+			<script src=<?php echo URL::base()."/scripts/jquery.validate.min.js" ?>></script>
+			<script src=<?php echo URL::base()."/scripts/custom/profile.js" ?>></script>
+		<?php
+		}
+		?>
+		
+		<?php
+		if(Request::current()->controller() == 'Login'){
+		?>
+			<!-- Profile Scripts-->
+			<script src=<?php echo URL::base()."/scripts/jquery.validate.min.js" ?>></script>
+			<script src=<?php echo URL::base()."/scripts/custom/login.js" ?>></script>
+		<?php
+		}
+		?>
 	
 		<?php
 		if(Request::current()->controller() == 'Home'){

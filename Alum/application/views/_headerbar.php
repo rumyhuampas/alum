@@ -1,3 +1,19 @@
+<?php 
+	$_sess = Session::instance();
+	$_currentuserid = $_sess->get('currentuserid');
+	$_currentusername = $_sess->get('currentusername');
+	$_currentuseravatar = $_sess->get('currentuseravatar');
+	if($_currentuserid == ''){
+		HTTP::redirect(URL::base()."../login/");	
+	}
+	if($_currentusername == ''){
+		$_currentusername = 'Usuario';
+	}
+	if($_currentuseravatar == ''){
+		$_currentuseravatar = '/assets/images/theme/avatarwhite.png';
+	}
+?>
+
 <div class="navbar">
 	<a href="#" onclick="return false;" class="btn pull-left toggle-sidebar"><i class="icon-list"></i></a>
 	<a class="navbar-brand" href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'home', 'action' => 'index')); ?>>Alumnitos</a>
@@ -117,17 +133,19 @@
 		</li><!-- / dropdown -->
 
 		<li class="dropdown user-name">
-			<a class="dropdown-toggle" data-toggle="dropdown"><img src=<?php echo URL::base()."/assets/images/theme/avatarAgus.png" ?> class="user-avatar" alt="" />Agustina Molina Hernando</a>
-				<ul class="dropdown-menu right inbox user">
-					<li class="user-avatar">
-						<img src=<?php echo URL::base()."/assets/images/theme/avatarAgus.png" ?> class="user-avatar" alt="" />
-						Agustina Molina Hernando
-					</li>
+			<a class="dropdown-toggle" data-toggle="dropdown">
+				<img src=<?php echo URL::base().$_currentuseravatar ?> class="user-avatar" alt="" /><?php echo $_currentusername ?>
+			</a>
+			<ul class="dropdown-menu right inbox user">
+				<li class="user-avatar">
+					<img src=<?php echo URL::base().$_currentuseravatar ?> class="user-avatar" alt="" />
+					<?php echo $_currentusername ?>
+				</li>
 				<li>
 					<i class="icon-user avatar"></i>
 					<div class="message">
 						<span class="username">
-							<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'index')); ?>>Perfil</a>
+							<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showuser', 'id' => '1')); ?>>Perfil</a>
 						</span> 
 					</div>
 				</li>
@@ -143,7 +161,7 @@
 						<span class="username">Ayuda</span> 
 					</div>
 				</li>
-				<li><a href="#">Logout</a></li>
+				<li><a href=<?php echo URL::base()."/login/exit" ?>>Salir</a></li>
 			</ul>
 		</li><!-- / dropdown -->				
 	</ul><!-- / Top right user menu -->

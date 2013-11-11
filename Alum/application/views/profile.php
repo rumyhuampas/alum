@@ -12,77 +12,106 @@
 				
 				<!-- Profile -->
 				<div class="row profile-head">
-					<img src=<?php echo URL::base()."/assets/images/theme/aguscover.png" ?> width="100%" height="300px" alt="">
+					<?php if($_user->Cover != ''){ ?>
+						<img src=<?php echo URL::base().$_user->Cover ?> width="100%" height="300px" alt="">
+					<?php
+					}else{?>
+						<img src=<?php echo URL::base().'/assets/images/theme/cover2.jpg' ?> width="100%" height="300px" alt="">
+					<?php 
+					}?>
 				</div>
 				
 				<div class="row">
-				
+					
 					<div class="col-md-8 profile-body">
 						<div class="profile-info">
-							<img src=<?php echo URL::base()."/assets/images/theme/avatarAgus2x.png" ?> class="avatar" alt="" >
-							<h2 class="name">Agustina Molina Hernando</h2>
-							<a href="#" class="pull-right"><i class="icon-edit"></i> Editar perfil</a>
-							<ul class="options list-inline">
-								<li><a href="#"><i class="icon-picture"></i> Futura Dentista</a></li>
-								<li><a href="https://www.facebook.com/agustina.molinahernando"><i class="icon-facebook"></i> agustina.molinahernando</a></li>
-								<li><a href="#"><i class="icon-time"></i> Directora general</a></li>
-							</ul>
+							<?php if($_user->Avatar != ''){ ?>
+								<img src=<?php echo URL::base().$_user->Avatar ?> class="avatar" alt="" >
+							<?php
+							}else{?>
+								<img src=<?php echo URL::base().'/assets/images/theme/avatar2x.png' ?> class="avatar" alt="" >
+							<?php
+							}?>
+							<h2 class="name"><?php echo $_user->Name ?></h2>
+							<?php
+							if($_userIsStudent == 'N'){
+								echo Form::open('abmuser/edit', array('method' => 'POST', 'class' => 'pull-right'));
+	                    		echo Form::hidden('userid', $_user->Id);
+								echo "<button class='btn btn-info' type='button' name='edituser'><i class='icon-edit'></i> Editar perfil</button>";
+								echo Form::close();
+								?>
+								<ul class="options list-inline">
+									<li><a href="#"><i class="icon-hand-right"></i> <?php echo $_user->Info ?></a></li>
+								</ul>
+							<?php
+							}else{
+								echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'pull-right'));
+	                    		echo Form::hidden('alumid', $_user->Id);
+								echo "<button class='btn btn-info' type='button' name='edituser'><i class='icon-edit'></i> Editar perfil</button>";
+								echo Form::close();
+								echo '<br />';
+							}
+							?>
 							<hr>
 
 							<div class="row profile-posts-block">
 								<!-- First Column---------------------------->
 								<div class="col-md-12">
 									
+									<?php include Kohana::find_file('views', '_msgrow'); ?>
+									
 									<div class="panel write-post">
 										<div class="panel-body">
-											<form method="post">
-												<input type="text" class="form-control text-input" placeholder="Write something">
-												<div class="post-type">
-													<div class="button-group btn-group-justified">
-														<a href="#" class="btn btn-default"><i class="icon-map-marker"></i></a>
-														<a href="#" class="btn btn-default"><i class="icon-picture"></i></a>
-														<a href="#" class="btn btn-default"><i class="icon-calendar"></i></a>
-														<a href="#" class="btn btn-default"><i class="icon-facetime-video"></i></a>
-														<a href="#" class="btn btn-success">Send</a>
-													</div>
-												</div>
-											</form>
+											<?php
+											echo Form::open('profile/newpost', array('method' => 'POST', 'id' => 'newpost'));
+		                            		echo Form::input('post', '', array('type' => 'text', 'id' => 'post', 'class' => 'form-control text-input', 'placeholder' => 'Escribe algo'));
+											echo '<div class="post-type">';
+												echo '<div class="button-group btn-group-justified">';
+													echo Form::hidden('userId', $_user->Id);
+													echo Form::hidden('userIsStudent', $_userIsStudent);
+													echo Form::button('btnsave', 'Enviar', array('class' => 'btn btn-success', 'id' => 'btnsave', 'style' => 'width:100%;')); 
+												echo '</div>';
+											echo '</div>';
+											echo Form::close();
+											?>
 										</div>
 									</div>
 
+									<?php
+									foreach($_userPosts as $post){
+									?>
 									<!-- Wall Post -->
 									<div class="panel panel-wall-post">
 										<div class="panel-heading">
-											<img src="images/theme/avatarTwo.png" alt="" class="avatar">
+											<img src=<?php echo URL::base().'/assets/images/Pencil.png' ?> alt="" class="avatar">
 											<div class="message">
-												<span class="username">Budia Gor</span> 
-												<span class="location">(India)</span> 
 												<div class="btn-group pull-right">
 													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 														<i class="icon-cog"></i>
 													</button>
 													<ul class="dropdown-menu" role="menu">
-														<li><a href="#">Report Spam</a></li>
-														<li><a href="#">Share Post</a></li>
-														<li><a href="#">Embed Post</a></li>
-														<li class="divider"></li>
-														<li><a href="#">Delete Post</a></li>
+														<li>
+															<?php
+															echo Form::open('profile/deletepost', array('method' => 'POST'));
+						                            		echo Form::hidden('userId', $_user->Id);
+															echo Form::hidden('userIsStudent', $_userIsStudent);
+															echo Form::hidden('postId', $post->Id);
+															echo "<a href='#' name='deletepost'>Eliminar</a>";
+															echo Form::close();
+															?>
+														</li>
 													</ul>
 												</div>
-												<div class="time "><i class="icon-time"> </i> 06:58 PM</div>
+												<div class="time "><i class="icon-time"> </i> <?php echo $post->CreatedAt; ?></div>
 											</div>
 										</div>
 										<div class="panel-body">
-											<p class="post-message">My new pet, OMG she is soooo adorable. </p>
-										</div>
-										<div class="panel-footer">
-											<div class="butto-group btn-group-justified">
-												<a href="#" class="btn btn-default disabled"><i class="icon-thumbs-up"></i> 20  &nbsp; <i class="icon-comment"></i>100</a>
-												<a href="#" class="btn btn-default"> like</a>
-												<a href="#" class="btn btn-default"> Comment</a>
-											</div>
+											<p class="post-message"><?php echo $post->Text; ?> </p>
 										</div>
 									</div><!-- /Wall Post -->
+									<?php
+									}
+									?>
 
 								</div><!--First Column-->
 								
@@ -99,46 +128,50 @@
 							</div>
 							<div class="panel-body">
 								<ul class='timeline'>
-									<li class="year">2013</li>
-									<li class='event offset-first'>
-										Something amazing happened today, but it's a secret
-									</li>
-									<li class='event'>
-										Timeline.css is <b>dynamic</b>, <b>responsive</b> and optimized to <b>demonstrate events</b> in your life in a <b>simple and clear</b> way
-									</li>
-									<li class="event">
-										<a href="#" title="christian fei">
-											made with &lt;3 by <img class='no-box centered' src="http://placehold.it/350x250&amp;text=Open+Image" alt="christian fei">
-										</a>
-									</li>
-									<li class="event">
-										<a href="#">
-											Open source project on codepen.io
-											<img class='no-box centered' src="http://placehold.it/350x250&amp;text=Open+Image" alt="">
-										</a>
-									</li>
-									<li class="year">2012</li>
-									<li class="event offset-first">
-										<p>To infinity  ... </p>
-										<img class='centered no-box' src="http://placehold.it/350x250&amp;text=Open+Image" alt="">
-										<a href='../../../upload.wikimedia.org/wikipedia/en/7/75/Buzz-lightyear-toy-story-3-wallpaper.jpg'>&copy;</a>
-									</li>
-									<li class='event'>
-										Look, a sleepy kitten: <br/>
-										<img class='no-box' src="http://placehold.it/350x250&amp;text=Open+Image" alt=""/>
-										<a href='../../../ih2.redbubble.net/image.10311838.0354/flat%2c550x550%2c075%2cf.jpg'>&copy;</a>
-									</li>
-									<li class="event featured">
-										<p>... and beyond! Featured class</p>
-										<img class='centered no-box' src="http://placehold.it/350x250&amp;text=Open+Image" alt="">
-										<a href='../../../brandstyle.com.br/wp-content/uploads/2012/05/Woody-7.jpg'>&copy;</a>
-									</li> 
+									<?php 
+									if(isset($_userAudits)){
+										$currentyear = '';
+										foreach($_userAudits as $audit){
+											$audityear = date('Y', strtotime($audit->CreatedAt));
+											if($currentyear != $audityear){
+												echo "<li class='year'>".$audityear."</li>";
+												echo "<li class='event offset-first'>";
+													echo "<div class='message'>";
+														echo "<img class='avatar' src=".URL::base().Helpers_Consts::getAuditIcon($audit->Type).">";
+														echo "<div class='time'><i class='icon-time'> </i> ".$audit->CreatedAt."</div>";
+													echo "</div>"; 
+													echo Helpers_Consts::getAuditText($audit->Type);
+													if($audit->Info != ''){
+														echo "<br />";
+														echo $audit->Info;
+													}
+												echo "</li>";
+												$currentyear = $audityear;
+											}
+											else{
+												echo "<li class='event'>";
+													echo "<div class='message'>";
+														echo "<img class='avatar' src=".URL::base().Helpers_Consts::getAuditIcon($audit->Type).">";
+														echo "<div class='time'><i class='icon-time'> </i> ".$audit->CreatedAt."</div>";
+													echo "</div>"; 
+													echo Helpers_Consts::getAuditText($audit->Type);
+													if($audit->Info != ''){
+														echo "<br />";
+														echo $audit->Info;
+													}
+												echo "</li>";
+											}
+										}
+									}
+									?>
 								</ul>
 							</div><!--panel-body-->
 						</div><!--panel panel-archon-->
 					</div><!--col-md-4-->
 					
 				</div><!--row-->
+				
+				<?php include Kohana::find_file('views', '_dlgyesno'); ?>
 	
 			</div><!-- /Main Content  @7 -->
 	
