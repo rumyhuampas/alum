@@ -62,17 +62,21 @@
 																	echo "<td>".$alumno->Address."</td>";
 																	echo '<td>';
 																		if($alumno->Active == 'Y'){
-																			echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-2'));
+																			echo Form::open('abmalum/show', array('method' => 'POST', 'class' => 'col-lg-1'));
+										                            		echo Form::hidden('alumid', $alumno->Id);
+																			echo "<button class='btn btn-info' type='button' name='showalum'><i class='icon-eye-open'></i></button>";
+																			echo Form::close();
+																			echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-1'));
 										                            		echo Form::hidden('alumid', $alumno->Id);
 																			echo "<button class='btn btn-info' type='button' name='editalum'><i class='icon-edit'></i></button>";
 																			echo Form::close();
-																			echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-2'));
+																			echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-1'));
 										                            		echo Form::hidden('alumid', $alumno->Id);
 																			echo "<button class='btn btn-info' type='button' name='deletealum'><i class='icon-remove'></i></button>";
-																			echo Form::close();	
+																			echo Form::close();
 																		}
 																		else{
-																			echo Form::open('abmalum/reactivate', array('method' => 'POST', 'class' => 'col-lg-2'));
+																			echo Form::open('abmalum/reactivate', array('method' => 'POST', 'class' => 'col-lg-1'));
 										                            		echo Form::hidden('alumid', $alumno->Id);
 																			echo "<button class='btn btn-info' type='button' name='reactivatealum'><i class='icon-ok'></i></button>";
 																			echo Form::close();

@@ -126,17 +126,17 @@ Kohana::modules(array(
  */
 Route::set('msgid', '<controller>/<action>/<id>/<msgtype>/<msgtext>')
 	->defaults(array(
-		'controller' => 'home',
+		'controller' => 'login',
 		'action'     => 'index'
 ));
 Route::set('msg', '<controller>/<action>/<msgtype>/<msgtext>')
 	->defaults(array(
-		'controller' => 'home',
+		'controller' => 'login',
 		'action'     => 'index'
 ));
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'home',
+		'controller' => 'login',
 		'action'     => 'index'
 ));
 

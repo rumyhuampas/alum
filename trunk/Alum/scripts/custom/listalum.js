@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	$('[name=showalum]').click(function(){
+		$(this).closest("form").submit();
+	});
+	
 	$('[name=editalum]').click(function(){
 		$(this).closest("form").submit();
 	});
@@ -7,7 +11,7 @@ $(document).ready(function() {
 		var thisform = jQuery(this).closest('form');
 		
 		$('#dlgtitle').text('Eliminar alumno');
-		$('#dlgtext').text('Esta seguro?');
+		$('#dlgtext').text('¿Esta seguro?');
 		$('#dlgyesno').modal('show');
 		
 		$('#dlgbtnyes').click(function(){
@@ -19,7 +23,7 @@ $(document).ready(function() {
 		var thisform = jQuery(this).closest('form');
 		
 		$('#dlgtitle').text('Reactivar alumno');
-		$('#dlgtext').text('Esta seguro?');
+		$('#dlgtext').text('¿Esta seguro?');
 		$('#dlgyesno').modal('show');
 		
 		$('#dlgbtnyes').click(function(){

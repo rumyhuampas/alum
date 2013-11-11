@@ -47,6 +47,24 @@
 .timeline .year:first-of-type {
   margin-top: 0 !important;
 }
+
+.timeline .event .message .time {
+    color: #9B9C9E;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 200;
+    margin-left: 20px;
+}
+
+.timeline .event .message img {
+    border: 0 none;
+    border-radius: 50% 50% 50% 50%;
+    float: left;
+    /*margin-right: 15px;*/
+    margin-top: 0;
+    width:17px;
+}
+
 /* line 51, ../scss/timeline.scss */
 .timeline .event {
   position: relative;
@@ -114,7 +132,7 @@
 @media all and (min-width: 600px) {
   /* line 107, ../scss/timeline.scss */
   .timeline .event:nth-child(2n) {
-    margin-top: 20px;
+   /*margin-top: 20px;*/ /******************************* JLB ****************************/
   }
 }
 @media all and (min-width: 650px) {
