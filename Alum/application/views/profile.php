@@ -78,40 +78,61 @@
 									</div>
 
 									<?php
-									foreach($_userPosts as $post){
-									?>
-									<!-- Wall Post -->
-									<div class="panel panel-wall-post">
-										<div class="panel-heading">
-											<img src=<?php echo URL::base().'/assets/images/Pencil.png' ?> alt="" class="avatar">
-											<div class="message">
-												<div class="btn-group pull-right">
-													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<i class="icon-cog"></i>
-													</button>
-													<ul class="dropdown-menu" role="menu">
-														<li>
-															<?php
-															echo Form::open('profile/deletepost', array('method' => 'POST'));
-						                            		echo Form::hidden('userId', $_user->Id);
-															echo Form::hidden('userIsStudent', $_userIsStudent);
-															echo Form::hidden('postId', $post->Id);
-															echo "<a href='#' name='deletepost'>Eliminar</a>";
-															echo Form::close();
-															?>
-														</li>
-													</ul>
+									if(isset($_userPosts)){
+										foreach($_userPosts as $post){
+										?>
+										<!-- Wall Post -->
+										<div class="panel panel-wall-post">
+											<div class="panel-heading">
+												<img src=<?php echo URL::base().'/assets/images/Pencil.png' ?> alt="" class="avatar">
+												<div class="message">
+													<div class="btn-group pull-right">
+														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+															<i class="icon-cog"></i>
+														</button>
+														<ul class="dropdown-menu" role="menu">
+															<li>
+																<?php
+																echo Form::open('profile/deletepost', array('method' => 'POST'));
+							                            		echo Form::hidden('userId', $_user->Id);
+																echo Form::hidden('userIsStudent', $_userIsStudent);
+																echo Form::hidden('postId', $post->Id);
+																echo "<a href='#' name='deletepost'>Eliminar</a>";
+																echo Form::close();
+																?>
+															</li>
+														</ul>
+													</div>
+													<div class="time "><i class="icon-time"> </i> <?php echo $post->CreatedAt; ?></div>
 												</div>
-												<div class="time "><i class="icon-time"> </i> <?php echo $post->CreatedAt; ?></div>
 											</div>
-										</div>
-										<div class="panel-body">
-											<p class="post-message"><?php echo $post->Text; ?> </p>
-										</div>
-									</div><!-- /Wall Post -->
-									<?php
+											<div class="panel-body">
+												<p class="post-message"><?php echo $post->Text; ?> </p>
+											</div>
+										</div><!-- /Wall Post -->
+										<?php
+										}
 									}
 									?>
+									
+									<div class="pull-right">
+										<?php
+										if($_userIsStudent == 'N'){
+										?>
+										<a name="showfullposts" href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showuserfullposts', 'id' => $_user->Id)); ?> type="button" class="btn btn-info">
+											<i class="icon-eye-open"></i> Mostrar todos
+										</a>
+										<?php
+										}
+										else{
+										?>
+										<a name="showfullposts" href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showstudentfullposts', 'id' => $_user->Id)); ?> type="button" class="btn btn-info">
+											<i class="icon-eye-open"></i> Mostrar todos
+										</a>
+										<?php
+										}
+										?>
+									</div>
 
 								</div><!--First Column-->
 								
@@ -141,10 +162,10 @@
 														echo "<div class='time'><i class='icon-time'> </i> ".$audit->CreatedAt."</div>";
 													echo "</div>"; 
 													echo Helpers_Consts::getAuditText($audit->Type);
-													if($audit->Info != ''){
-														echo "<br />";
-														echo $audit->Info;
-													}
+													echo "<br />";
+													echo "<small>";
+														echo Helpers_Consts::getAuditInfo($audit);
+													echo "</small>";	
 												echo "</li>";
 												$currentyear = $audityear;
 											}
@@ -155,16 +176,35 @@
 														echo "<div class='time'><i class='icon-time'> </i> ".$audit->CreatedAt."</div>";
 													echo "</div>"; 
 													echo Helpers_Consts::getAuditText($audit->Type);
-													if($audit->Info != ''){
-														echo "<br />";
-														echo $audit->Info;
-													}
+													echo "<br />";
+													echo "<small>";
+														echo Helpers_Consts::getAuditInfo($audit);
+													echo "</small>";	
 												echo "</li>";
 											}
 										}
 									}
 									?>
 								</ul>
+								<br />
+								<div class="pull-right">
+									<?php
+									if($_userIsStudent == 'N'){
+									?>
+									<a name="showfulltimeline" href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showuserfulltimeline', 'id' => $_user->Id)); ?> type="button" class="btn btn-info">
+										<i class="icon-eye-open"></i> Mostrar todos
+									</a>
+									<?php
+									}
+									else{
+									?>
+									<a name="showfulltimeline" href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showstudentfulltimeline', 'id' => $_user->Id)); ?> type="button" class="btn btn-info">
+										<i class="icon-eye-open"></i> Mostrar todos
+									</a>
+									<?php
+									}
+									?>
+								</div>
 							</div><!--panel-body-->
 						</div><!--panel panel-archon-->
 					</div><!--col-md-4-->

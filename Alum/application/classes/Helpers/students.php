@@ -18,4 +18,14 @@ class Helpers_Students {
 	public static function getActives(){
 		return ORM::factory('student')->where('Active', '=', 'Y')->order_by('name')->find_all();
 	}
+	
+	public static function getNameResume($id){
+		$std = ORM::factory('student', $id);
+		if(strlen($std->Name) > 20){
+			return substr($std->Name, 0, 20).'...';
+		}
+		else{
+			return $std->Name;
+		}
+	}
 }

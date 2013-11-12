@@ -63,4 +63,21 @@ class Helpers_Consts {
 				break;
 		}
 	}
+	
+	public static function getAuditInfo($audit){
+		switch($audit->Type){
+			case self::OT_LOGIN: return Helpers_Users::get($audit->UserId)->Username;
+				break;
+			case self::OT_POST: return Helpers_Posts::getTextResume($audit->Info);
+				break;
+			case self::OT_CREATE: return Helpers_Students::getNameResume($audit->StudentId);
+				break;
+			case self::OT_MODIF: return Helpers_Students::getNameResume($audit->StudentId);
+				break;
+			case self::OT_DELETE: return Helpers_Students::getNameResume($audit->StudentId);
+				break;
+			case self::OT_REACT: return Helpers_Students::getNameResume($audit->StudentId);
+				break;
+		}
+	}
 }

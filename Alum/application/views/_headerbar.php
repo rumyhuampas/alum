@@ -152,13 +152,9 @@
 				<li>
 					<i class="icon-cogs avatar"></i>
 					<div class="message">
-						<span class="username">Configuracion</span> 
-					</div>
-				</li>
-				<li>
-					<i class="icon-book avatar"></i>
-					<div class="message">
-						<span class="username">Ayuda</span> 
+						<span class="username">
+							<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'config')); ?>>Configuracion</a>
+						</span> 
 					</div>
 				</li>
 				<li><a href=<?php echo URL::base()."/login/exit" ?>>Salir</a></li>
