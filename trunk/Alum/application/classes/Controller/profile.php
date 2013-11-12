@@ -10,8 +10,8 @@ class Controller_Profile extends Controller {
 		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdUser = $this->request->param('id');
 		$view->_user = Helpers_Users::get($IdUser);
-		$view->_userPosts = Helpers_Posts::get($IdUser, 'N');
-		$view->_userAudits = Helpers_Audits::get($IdUser, 'N');
+		$view->_userPosts = Helpers_Posts::get($IdUser, 'N', 10);
+		$view->_userAudits = Helpers_Audits::get($IdUser, 'N', 20);
 		$view->_userIsStudent = 'N';
 		$this->response->body($view->render());
 	}
@@ -24,8 +24,8 @@ class Controller_Profile extends Controller {
 		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdStudent = $this->request->param('id');
 		$view->_user = Helpers_Students::get($IdStudent);
-		$view->_userPosts = Helpers_Posts::get($IdStudent, 'Y');
-		$view->_userAudits = Helpers_Audits::get($IdStudent, 'Y');
+		$view->_userPosts = Helpers_Posts::get($IdStudent, 'Y', 10);
+		$view->_userAudits = Helpers_Audits::get($IdStudent, 'Y', 20);
 		$view->_userIsStudent = 'Y';
 		$this->response->body($view->render());
 	}
@@ -70,6 +70,58 @@ class Controller_Profile extends Controller {
 			HTTP::redirect(Route::get('msgid')->uri(array('controller' => 'profile', 'action' => 'showuser', 'id' => $_POST['userId'],
 				'msgtype' => 'alert-success', 'msgtext' => 'Post eliminado con exito.')));
 		}
+	}
+	
+	public function action_showuserfulltimeline()
+	{
+		$view=View::factory('fulltimeline');
+		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
+		//$view->_menuid = Helpers_Const::MENUINICIOID;
+		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
+		$IdUser = $this->request->param('id');
+		$view->_user = Helpers_Users::get($IdUser);
+		$view->_userAudits = Helpers_Audits::get($IdUser, 'N');
+		$view->_userIsStudent = 'N';
+		$this->response->body($view->render());
+	}
+	
+	public function action_showstudentfulltimeline()
+	{
+		$view=View::factory('fulltimeline');
+		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
+		//$view->_menuid = Helpers_Const::MENUINICIOID;
+		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
+		$IdStudent = $this->request->param('id');
+		$view->_user = Helpers_Students::get($IdStudent);
+		$view->_userAudits = Helpers_Audits::get($IdStudent, 'Y');
+		$view->_userIsStudent = 'Y';
+		$this->response->body($view->render());
+	}
+	
+	public function action_showuserfullposts()
+	{
+		$view=View::factory('fullposts');
+		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
+		//$view->_menuid = Helpers_Const::MENUINICIOID;
+		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
+		$IdUser = $this->request->param('id');
+		$view->_user = Helpers_Users::get($IdUser);
+		$view->_userPosts = Helpers_Posts::get($IdUser, 'N');
+		$view->_userIsStudent = 'N';
+		$this->response->body($view->render());
+	}
+	
+	public function action_showstudentfullposts()
+	{
+		$view=View::factory('fullposts');
+		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
+		//$view->_menuid = Helpers_Const::MENUINICIOID;
+		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
+		$IdStudent = $this->request->param('id');
+		$view->_user = Helpers_Students::get($IdStudent);
+		$view->_userPosts = Helpers_Posts::get($IdStudent, 'Y');
+		$view->_userIsStudent = 'Y';
+		$this->response->body($view->render());
 	}
 
 } // End Welcome

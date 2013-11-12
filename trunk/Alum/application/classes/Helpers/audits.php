@@ -2,19 +2,25 @@
 
 class Helpers_Audits {
 	
-	public static function get($userId, $userIsStudent){
+	public static function get($userId, $userIsStudent, $limit = NULL){
+		$audits = NULL;	
 		if($userIsStudent == 'N'){
-			return ORM::factory('audit')
+			$audits = ORM::factory('audit')
 				->where('UserId', '=', $userId)
-				->order_by('CreatedAt', 'DESC')
-				->find_all();
+				->order_by('CreatedAt', 'DESC');
+			if(isset($limit)){
+				$audits->limit($limit);
+			}
 		}
 		else{
-			return ORM::factory('audit')
+			$audits = ORM::factory('audit')
 				->where('StudentId', '=', $userId)
-				->order_by('CreatedAt', 'DESC')
-				->find_all();
+				->order_by('CreatedAt', 'DESC');
+			if(isset($limit)){
+				$audits->limit($limit);
+			}
 		}
+		return $audits->find_all();
 	}
 	
 	public static function addAudit($userId, $studentId, $type, $info = NULL){
