@@ -50,12 +50,6 @@
 														<?php echo Form::select('year', Helpers_Combos::getBirthYears(), '', array('id' => 'year', 'class' => 'form-control')); ?>
 													</div>
 												</div>
-												<div class="form-group">
-													<?php echo Form::label('obs', 'Observaciones', array('class' => 'col-lg-1 control-label')); ?>
-													<div class="col-lg-11">
-														<textarea name="obs" id="obs" class="form-control" rows="5" cols="80"></textarea>
-													</div>
-												</div>
 											</div>
 											<div class="tab-pane" id="tab2">
 												<div class="form-group">
@@ -127,8 +121,6 @@
 													<dd id="finishname"></dd>
 													<dt>Fecha de nacimiento</dt>
 													<dd id="finishbirth"></dd>
-													<dt>Observaciones</dt>
-													<dd id="finishobs"></dd>
 													<dt>Telefono 1</dt>
 													<dd id="finishtel1"></dd>
 													<dt>Telefono 2</dt>

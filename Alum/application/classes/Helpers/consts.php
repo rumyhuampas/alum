@@ -1,18 +1,15 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 
 class Helpers_Consts {
-	/******** APLICACION *********/
-	const APPNAME = 'Alumnitos';
-	const APPCONFIGGROUP = 'alum';
-	
-	/******** KEYS *********/
-	const KEY_CURRENTUSERNAME = 'CURRENTUSERNAME';
-	const KEY_CURRENTUSERAVATAR = 'CURRENTUSERAVATAR';
-	
 	/******** SESSION *********/
-	const SS_CURRENTUSERID = 'currentuserid';
-	const SS_CURRENTUSERNAME = 'currentusername';
-	const SS_CURRENTUSERAVATAR = 'currentuseravatar';
+	const SS_CURRENTUSERID = 'CURRENTUSERID';
+	const SS_CURRENTUSERNAME = 'CURRENTUSERNAME';
+	const SS_CURRENTUSERAVATAR = 'CURRENTUSERAVATAR';
+	
+	/******** CONFIG *********/
+	const CONFIG_APPTITLE = 'APPTITLE';
+	const CONFIG_DEFAULTUSERNAME = 'DEFAULTUSERNAME';
+	const CONFIG_DEFAULTUSERAVATAR = 'DEFAULTUSERAVATAR';
 	
 	/******** AUDIT *********/
 	const OT_LOGIN = 'LOGIN';

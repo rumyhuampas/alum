@@ -15,6 +15,10 @@ class Helpers_Students {
 		}
 	}
 	
+	public static function getByName($name){
+		return ORM::factory('student')->where('Name', '=', $name)->find();
+	}
+	
 	public static function getActives(){
 		return ORM::factory('student')->where('Active', '=', 'Y')->order_by('name')->find_all();
 	}
@@ -27,5 +31,18 @@ class Helpers_Students {
 		else{
 			return $std->Name;
 		}
+	}
+	
+	public static function getForAutoComplete(){
+		$data = DB::select('name')
+			->from('students')
+			->where('Active', '=', 'Y')
+			->order_by('Name', 'ASC')
+			->execute();
+		$jsonarray = array();
+		for($i=0; $i<count($data); $i++){
+			array_push($jsonarray, $data[$i]['name']);
+		}
+		return $jsonarray;
 	}
 }

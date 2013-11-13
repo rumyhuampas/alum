@@ -43,12 +43,12 @@ class Controller_Profile extends Controller {
 			$post->create();
 			
 			if($_POST['userIsStudent'] == 'Y'){
-				Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), $_POST['userId'], Helpers_Consts::OT_POST, $post->Id);
+				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $_POST['userId'], Helpers_Consts::OT_POST, $post->Id);
 				HTTP::redirect(Route::get('msgid')->uri(array('controller' => 'profile', 'action' => 'showstudent', 'id' => $_POST['userId'],
 					'msgtype' => 'alert-success', 'msgtext' => 'Post agregado con exito.')));
 			}
 			else{
-				Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_POST, $post->Id);
+				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_POST, $post->Id);
 				HTTP::redirect(Route::get('msgid')->uri(array('controller' => 'profile', 'action' => 'showuser', 'id' => $_POST['userId'],
 					'msgtype' => 'alert-success', 'msgtext' => 'Post agregado con exito.')));
 			}
@@ -61,12 +61,12 @@ class Controller_Profile extends Controller {
 		$post->delete();
 		
 		if($_POST['userIsStudent'] == 'Y'){
-			Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), $_POST['userId'], Helpers_Consts::OT_POSTDELETE, $post->Id);
+			Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $_POST['userId'], Helpers_Consts::OT_POSTDELETE, $_POST['postId']);
 			HTTP::redirect(Route::get('msgid')->uri(array('controller' => 'profile', 'action' => 'showstudent', 'id' => $_POST['userId'],
 				'msgtype' => 'alert-success', 'msgtext' => 'Post eliminado con exito.')));
 		}
 		else{
-			Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_POSTDELETE, $post->Id);
+			Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_POSTDELETE, $_POST['postId']);
 			HTTP::redirect(Route::get('msgid')->uri(array('controller' => 'profile', 'action' => 'showuser', 'id' => $_POST['userId'],
 				'msgtype' => 'alert-success', 'msgtext' => 'Post eliminado con exito.')));
 		}

@@ -10,24 +10,42 @@
 			<!-- sidebar input search box -->
 			<li class="nav-search">
 				<div class="form-group">
-					<input type="text" class="form-control nav-search" placeholder="Buscar alumno" />
+					<input type="text" id="studentsearch" class="form-control nav-search" placeholder="Buscar alumno" />
 					<span class="input-icon fui-search"></span>
 				</div>
 			</li>
+			<li class="nav-header" id="studentsearchmsg"></li>
 
-			<!-- Sidebar header @add class nav-header for sidebar header -->
 			<li class="nav-header">General</li>
-			<li class="active"><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'home', 'action' => 'index')); ?>>
-				<i class="icon-dashboard"></i>Dashboard </a></li>
-			<li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'calendar', 'action' => 'index')); ?>>
-				<i class="icon-calendar"></i>Calendario</a></li>
+			<?php
+			if(Request::current()->controller() == 'Home'){ echo "<li class='active'>";	} else{ echo "<li>"; }
+			?>
+				<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'home', 'action' => 'index')); ?>>
+					<i class="icon-dashboard"></i>Dashboard </a>
+			</li>
+			<?php
+			if(Request::current()->controller() == 'Calendar'){ echo "<li class='active'>";	} else{ echo "<li>"; }
+			?>
+				<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'calendar', 'action' => 'index')); ?>>
+					<i class="icon-calendar"></i>Calendario</a>
+			</li>
 
-			<!-- Sidebar header @add class nav-header for sidebar header -->
+			
 			<li class="nav-header">Alumnos</li>
-			<li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'abmalum', 'action' => 'index')); ?>>
-				<i class="icon-group"></i>Lista de alumnos</a></li>
-			<li><a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'abmalum', 'action' => 'new')); ?>>
-				<i class="icon-list-alt"></i>Nuevo alumno</a></li>
+			<?php
+			if(Request::current()->controller() == 'Abmalum' && Request::current()->action() == 'index'){ echo "<li class='active'>";	} 
+			else{ echo "<li>"; }
+			?>
+				<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'abmalum', 'action' => 'index')); ?>>
+					<i class="icon-group"></i>Lista de alumnos</a>
+			</li>
+			<?php
+			if(Request::current()->controller() == 'Abmalum' && Request::current()->action() == 'new'){ echo "<li class='active'>";	} 
+			else{ echo "<li>"; }
+			?>
+				<a href=<?php echo URL::base().Route::get('default')->uri(array('controller' => 'abmalum', 'action' => 'new')); ?>>
+					<i class="icon-list-alt"></i>Nuevo alumno</a>
+			</li>
 			
 		</ul>
 
