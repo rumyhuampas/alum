@@ -24,7 +24,7 @@ class Controller_Config extends Controller {
 				$config->Value = $_POST['value'];
 				$config->create();
 				
-				Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_CONFIGCREATE, $_POST['key']);
+				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_CONFIGCREATE, $_POST['key']);
 				
 				HTTP::redirect(Route::get('msg')->uri(array('controller' => 'config', 'action' => 'index',
 					'msgtype' => 'alert-success', 'msgtext' => 'Configuracion agregada con exito.')));
@@ -44,7 +44,7 @@ class Controller_Config extends Controller {
 				$config->Value = $_POST[$config->Key];
 				$config->update();
 				
-				Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_CONFIGMODIF, $config->Key);
+				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_CONFIGMODIF, $config->Key);
 			}
 		}
 		
@@ -58,7 +58,7 @@ class Controller_Config extends Controller {
 			$config = Helpers_Configs::get($_POST['configkey']);
 			$config->delete();
 			
-			Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_CONFIGDELETE, $_POST['configkey']);
+			Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_CONFIGDELETE, $_POST['configkey']);
 			
 			//echo json_encode('success');
 			echo URL::base().Route::get('msg')->uri(array('controller' => 'config', 'action' => 'index',

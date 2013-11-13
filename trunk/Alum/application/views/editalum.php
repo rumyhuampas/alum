@@ -51,10 +51,6 @@
 									</div>
 									<br />
 									<div class="form-group">
-										<?php echo Form::label('obs', 'Observaciones', array('class' => 'control-label')); ?>
-										<textarea name="obs" id="obs" class="form-control" rows="5" cols="80"><?php echo $_alum->Obs ?></textarea>
-									</div>
-									<div class="form-group">
 										<?php echo Form::label('father', 'Nombre del padre', array('class' => 'control-label')); ?>
 										<?php echo Form::input('father', $_alum->Father, array('type' => 'text', 'id' => 'father', 'class' => 'form-control')); ?>
 									</div>

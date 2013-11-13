@@ -101,6 +101,8 @@
 		<!-- Archon JS =============================-->
 		<script src=<?php echo URL::base()."/scripts/archon.js" ?>></script>
 		
+		<script src=<?php echo URL::base()."/scripts/custom/menubar.js" ?>></script>
+		
 		<?php
 		if(Request::current()->controller() == 'Home'){
 		?>	

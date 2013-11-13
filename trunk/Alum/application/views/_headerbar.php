@@ -1,23 +1,16 @@
 <?php 
-	$_sess = Session::instance();
-	$_currentuserid = $_sess->get('currentuserid');
-	$_currentusername = $_sess->get('currentusername');
-	$_currentuseravatar = $_sess->get('currentuseravatar');
+	$_currentuserid = Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID);
 	if($_currentuserid == ''){
 		HTTP::redirect(URL::base()."../login/");	
 	}
-	$configobj = Kohana::$config->load(Helpers_Consts::APPCONFIGGROUP);
+	$_currentusername = Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERNAME);
 	if($_currentusername == ''){
-		$_currentusername = $configobj->get(Helpers_Consts::KEY_CURRENTUSERNAME);
+		$_currentusername = Helpers_Session::get(Helpers_Consts::CONFIG_DEFAULTUSERNAME);
 	}
+	$_currentuseravatar = Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERAVATAR);
 	if($_currentuseravatar == ''){
-		$_currentuseravatar = $configobj->get(Helpers_Consts::KEY_CURRENTUSERAVATAR);
+		$_currentuseravatar = Helpers_Session::get(Helpers_Consts::CONFIG_DEFAULTUSERAVATAR);
 	}
-	$conf = Kohana::$config->load(Helpers_Consts::APPCONFIGGROUP);
-	echo $conf['test'];
-	$conf->set('test2', 'test2');
-	echo $conf['test2'];
-	echo $conf['CURRENTUSERNAME'];
 ?>
 
 <div class="navbar">

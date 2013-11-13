@@ -26,7 +26,6 @@ class Controller_ABMAlum extends Controller {
 				$std = ORM::factory('student');
 				$std->Name = $_POST['name'];
 				$std->Birth = date('Y-m-d', strtotime($_POST['year'].'-'.$_POST['month'].'-'.$_POST['day']));
-				$std->Obs = $_POST['obs'];
 				$std->Father = $_POST['father'];
 				$std->Mother = $_POST['mother'];
 				$std->Contact = $_POST['contact'];
@@ -42,7 +41,7 @@ class Controller_ABMAlum extends Controller {
 				$std->Active = 'Y';
 				$std->create();
 				
-				Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_CREATE);
+				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_CREATE);
 				
 				HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 					'msgtype' => 'alert-success', 'msgtext' => 'Alumno agregado con exito.')));
@@ -55,8 +54,21 @@ class Controller_ABMAlum extends Controller {
 	}
 
 	public function action_show(){
-		HTTP::redirect(Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showstudent',
-			'id' => $_POST['alumid'])));	
+		$alumid = $_POST['alumid'];
+		if ($this->request->is_ajax()) {
+			$std = Helpers_Students::getByName($_POST['name']);
+			if($std->loaded()){
+				echo URL::base().Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showstudent',
+					'id' => $std->Id));
+			}
+			else{
+				echo 'ERROR';
+			}
+		}
+		else{
+			HTTP::redirect(Route::get('default')->uri(array('controller' => 'profile', 'action' => 'showstudent',
+				'id' => $alumid)));
+		}	
 	}
 
 	public function action_edit()
@@ -71,7 +83,6 @@ class Controller_ABMAlum extends Controller {
 			$std = Helpers_Students::get($_POST['alumid']);
 			$std->Name = $_POST['name'];
 			$std->Birth = date('Y-m-d', strtotime($_POST['year'].'-'.$_POST['month'].'-'.$_POST['day']));
-			$std->Obs = $_POST['obs'];
 			$std->Father = $_POST['father'];
 			$std->Mother = $_POST['mother'];
 			$std->Contact = $_POST['contact'];
@@ -85,7 +96,7 @@ class Controller_ABMAlum extends Controller {
 			$std->ModifiedOn = DB::expr('Now()');
 			$std->update();
 			
-			Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_MODIF);
+			Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_MODIF);
 			
 			HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 				'msgtype' => 'alert-success', 'msgtext' => 'Alumno modificado con exito.')));
@@ -99,7 +110,7 @@ class Controller_ABMAlum extends Controller {
 		$std->ModifiedOn = DB::expr('Now()');
 		$std->update();
 		
-		Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_DELETE);
+		Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_DELETE);
 		
 		HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 			'msgtype' => 'alert-success', 'msgtext' => 'Alumno eliminado con exito.')));
@@ -112,7 +123,7 @@ class Controller_ABMAlum extends Controller {
 		$std->ModifiedOn = DB::expr('Now()');
 		$std->update();
 		
-		Helpers_Audits::addAudit(Session::instance()->get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_REACT);
+		Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_REACT);
 		
 		HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 			'msgtype' => 'alert-success', 'msgtext' => 'Alumno reactivado con exito.')));

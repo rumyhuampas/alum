@@ -3,7 +3,13 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Archon Admin Template</title>
+		<?php
+		$title = Helpers_Session::get(Helpers_Consts::CONFIG_APPTITLE);
+		if($title == ''){
+			$title = Helpers_Configs::get(Helpers_Consts::CONFIG_APPTITLE)->Value;
+		}
+		echo "<title>".$title."</title>";		
+		?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 		<!-- Loading Bootstrap -->
