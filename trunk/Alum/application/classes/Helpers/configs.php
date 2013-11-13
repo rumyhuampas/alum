@@ -14,4 +14,8 @@ class Helpers_Configs {
 				->find_all();
 		}
 	}
+	
+	public static function exists($key){
+		return ORM::factory('config')->where('Key', '=', $key)->count_all() > 0;
+	}
 }

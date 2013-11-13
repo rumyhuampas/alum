@@ -43,24 +43,32 @@
 									echo "</div>";
 									echo Form::button('saveconfig', 'Agregar', array('class' => 'col-lg-2 btn btn-default'));
 								echo Form::close();
-								?>
 
-								<?php echo Form::open('config/edit', array('method' => 'POST', 'id' => 'editconfig', 'class' => 'form-vertical'));
-									if(isset($_configs)){
+								if(isset($_configs) && count($_configs)){
+									echo "<br clear='all' />";
+									echo Form::open('config/edit', array('method' => 'POST', 'id' => 'editconfig', 'class' => 'form-horizontal'));
 										foreach($_configs as $config){
 											echo "<div class='form-group'>";
-												echo Form::label($config->Key, $config->Key, array('class' => 'control-label'));
-												echo Form::input($config->Key, $config->Value, array('type' => 'text', 'id' => $config->Key, 'class' => 'form-control'));
+												echo Form::label($config->Key, $config->Key, array('class' => 'control-label col-lg-2'));
+												echo "<div class='col-lg-9'>";
+													echo Form::input($config->Key, $config->Value, array('type' => 'text', 'id' => $config->Key, 'class' => 'form-control'));
+												echo "</div>";
+												echo "<div class='col-lg-1'>";
+				                            		echo Form::hidden('configkey', $config->Key);
+													echo "<button class='btn btn-info' type='button' name='deleteconfig'><i class='icon-remove'></i></button>";
+												echo "</div>";
 											echo "</div>";		
 										}
-									}
+									echo "<button class='btn btn-primary' type='submit'>Guardar cambios</button>";
+									echo Form::close();
+								}
 								?>
-								<button class="btn btn-primary" type="submit">Guardar cambios</button>								
-								<?php echo Form::close(); ?>
 							</div>
 						</div>
 					</div>
 				</div>
+				
+				<?php include Kohana::find_file('views', '_dlgyesno'); ?>
 	
 			</div><!-- /Main Content  @7 -->
 	

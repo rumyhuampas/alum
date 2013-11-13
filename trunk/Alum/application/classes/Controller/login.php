@@ -28,6 +28,12 @@ class Controller_Login extends Controller {
 					
 					Helpers_Audits::addAudit($log->Id, '', Helpers_Consts::OT_LOGIN);
 					
+					//$configobj = Kohana::$config->load(Helpers_Consts::APPCONFIGGROUP);
+					$configs = Helpers_Configs::get();
+					foreach($configs as $config){
+						Kohana::$config->load(Helpers_Consts::APPCONFIGGROUP)->set($config->Key, $config->Value);
+					}
+					
 					HTTP::redirect(Route::get('default')->uri(array('controller' => 'home', 'action' => 'index')));
 				}
 				else{

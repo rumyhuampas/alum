@@ -6,12 +6,18 @@
 	if($_currentuserid == ''){
 		HTTP::redirect(URL::base()."../login/");	
 	}
+	$configobj = Kohana::$config->load(Helpers_Consts::APPCONFIGGROUP);
 	if($_currentusername == ''){
-		$_currentusername = 'Usuario';
+		$_currentusername = $configobj->get(Helpers_Consts::KEY_CURRENTUSERNAME);
 	}
 	if($_currentuseravatar == ''){
-		$_currentuseravatar = '/assets/images/theme/avatarwhite.png';
+		$_currentuseravatar = $configobj->get(Helpers_Consts::KEY_CURRENTUSERAVATAR);
 	}
+	$conf = Kohana::$config->load(Helpers_Consts::APPCONFIGGROUP);
+	echo $conf['test'];
+	$conf->set('test2', 'test2');
+	echo $conf['test2'];
+	echo $conf['CURRENTUSERNAME'];
 ?>
 
 <div class="navbar">
