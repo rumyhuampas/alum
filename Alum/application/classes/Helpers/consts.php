@@ -3,6 +3,11 @@
 class Helpers_Consts {
 	/******** APLICACION *********/
 	const APPNAME = 'Alumnitos';
+	const APPCONFIGGROUP = 'alum';
+	
+	/******** KEYS *********/
+	const KEY_CURRENTUSERNAME = 'CURRENTUSERNAME';
+	const KEY_CURRENTUSERAVATAR = 'CURRENTUSERAVATAR';
 	
 	/******** SESSION *********/
 	const SS_CURRENTUSERID = 'currentuserid';
@@ -17,6 +22,9 @@ class Helpers_Consts {
 	const OT_MODIF = 'MODIFICACION';
 	const OT_DELETE = 'ELIMINACION';
 	const OT_REACT = 'REACTIVACION';
+	const OT_CONFIGCREATE = 'CONFIG CREACION';
+	const OT_CONFIGDELETE = 'CONFIG ELIMINACION';
+	const OT_CONFIGMODIF = 'CONFIG MODIFICACION';
 	
 	const OTIMG_LOGIN = '/assets/images/Key.png';
 	const OTIMG_POST = '/assets/images/Pencil.png';
@@ -42,6 +50,12 @@ class Helpers_Consts {
 				break;
 			case self::OT_REACT: return self::OTIMG_REACT;
 				break;
+			case self::OT_CONFIGCREATE: return self::OTIMG_CREATE;
+				break;
+			case self::OT_CONFIGDELETE: return self::OTIMG_DELETE;
+				break;
+			case self::OT_CONFIGMODIF: return self::OTIMG_MODIF;
+				break;
 		}
 	}
 	
@@ -61,6 +75,12 @@ class Helpers_Consts {
 				break;
 			case self::OT_REACT: return 'Alumno reactivado';
 				break;
+			case self::OT_CONFIGCREATE: return 'Configuracion creada';
+				break;
+			case self::OT_CONFIGDELETE: return 'Configuracion Eliminada';
+				break;
+			case self::OT_CONFIGMODIF: return 'Configuracion modificada';
+				break;
 		}
 	}
 	
@@ -70,6 +90,8 @@ class Helpers_Consts {
 				break;
 			case self::OT_POST: return Helpers_Posts::getTextResume($audit->Info);
 				break;
+			case self::OT_POSTDELETE: return $audit->Info;
+				break;
 			case self::OT_CREATE: return Helpers_Students::getNameResume($audit->StudentId);
 				break;
 			case self::OT_MODIF: return Helpers_Students::getNameResume($audit->StudentId);
@@ -77,6 +99,12 @@ class Helpers_Consts {
 			case self::OT_DELETE: return Helpers_Students::getNameResume($audit->StudentId);
 				break;
 			case self::OT_REACT: return Helpers_Students::getNameResume($audit->StudentId);
+				break;
+			case self::OT_CONFIGCREATE: return Helpers_Configs::get($audit->Info)->Key;
+				break;
+			case self::OT_CONFIGDELETE: return $audit->Info;
+				break;
+			case self::OT_CONFIGMODIF: return Helpers_Configs::get($audit->Info)->Key;
 				break;
 		}
 	}

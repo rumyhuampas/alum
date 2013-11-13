@@ -52,6 +52,16 @@
 		?>
 		
 		<?php
+		if(Request::current()->controller() == 'Config'){
+		?>
+			<!-- Profile Scripts-->
+			<script src=<?php echo URL::base()."/scripts/jquery.validate.min.js" ?>></script>
+			<script src=<?php echo URL::base()."/scripts/custom/config.js" ?>></script>
+		<?php
+		}
+		?>
+		
+		<?php
 		if(Request::current()->controller() == 'Login'){
 		?>
 			<!-- Profile Scripts-->
