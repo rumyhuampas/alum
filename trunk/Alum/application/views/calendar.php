@@ -46,6 +46,8 @@
 						</div>
 					</div>
 				</div>
+				
+				<div id="dialog" title="" style="display:none;">Are you sure want to delete it?</div>
 	
 			</div><!-- /Main Content  @7 -->
 	

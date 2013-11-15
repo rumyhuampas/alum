@@ -22,6 +22,9 @@ class Helpers_Consts {
 	const OT_CONFIGCREATE = 'CONFIG CREACION';
 	const OT_CONFIGDELETE = 'CONFIG ELIMINACION';
 	const OT_CONFIGMODIF = 'CONFIG MODIFICACION';
+	const OT_EVENTCREATE = 'EVENTO CREACION';
+	const OT_EVENTDELETE = 'EVENTO ELIMINACION';
+	const OT_EVENTMODIF = 'EVENTO MODIFICACION';
 	
 	const OTIMG_LOGIN = '/assets/images/Key.png';
 	const OTIMG_POST = '/assets/images/Pencil.png';

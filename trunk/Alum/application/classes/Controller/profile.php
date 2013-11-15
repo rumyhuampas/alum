@@ -5,9 +5,6 @@ class Controller_Profile extends Controller {
 	public function action_showuser()
 	{
 		$view=View::factory('profile');
-		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
-		//$view->_menuid = Helpers_Const::MENUINICIOID;
-		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdUser = $this->request->param('id');
 		$view->_user = Helpers_Users::get($IdUser);
 		$view->_userPosts = Helpers_Posts::get($IdUser, 'N', 10);
@@ -19,9 +16,6 @@ class Controller_Profile extends Controller {
 	public function action_showstudent()
 	{
 		$view=View::factory('profile');
-		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
-		//$view->_menuid = Helpers_Const::MENUINICIOID;
-		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdStudent = $this->request->param('id');
 		$view->_user = Helpers_Students::get($IdStudent);
 		$view->_userPosts = Helpers_Posts::get($IdStudent, 'Y', 10);
@@ -75,9 +69,6 @@ class Controller_Profile extends Controller {
 	public function action_showuserfulltimeline()
 	{
 		$view=View::factory('fulltimeline');
-		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
-		//$view->_menuid = Helpers_Const::MENUINICIOID;
-		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdUser = $this->request->param('id');
 		$view->_user = Helpers_Users::get($IdUser);
 		$view->_userAudits = Helpers_Audits::get($IdUser, 'N');
@@ -88,9 +79,6 @@ class Controller_Profile extends Controller {
 	public function action_showstudentfulltimeline()
 	{
 		$view=View::factory('fulltimeline');
-		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
-		//$view->_menuid = Helpers_Const::MENUINICIOID;
-		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdStudent = $this->request->param('id');
 		$view->_user = Helpers_Students::get($IdStudent);
 		$view->_userAudits = Helpers_Audits::get($IdStudent, 'Y');
@@ -101,9 +89,6 @@ class Controller_Profile extends Controller {
 	public function action_showuserfullposts()
 	{
 		$view=View::factory('fullposts');
-		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
-		//$view->_menuid = Helpers_Const::MENUINICIOID;
-		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdUser = $this->request->param('id');
 		$view->_user = Helpers_Users::get($IdUser);
 		$view->_userPosts = Helpers_Posts::get($IdUser, 'N');
@@ -114,9 +99,6 @@ class Controller_Profile extends Controller {
 	public function action_showstudentfullposts()
 	{
 		$view=View::factory('fullposts');
-		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
-		//$view->_menuid = Helpers_Const::MENUINICIOID;
-		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$IdStudent = $this->request->param('id');
 		$view->_user = Helpers_Students::get($IdStudent);
 		$view->_userPosts = Helpers_Posts::get($IdStudent, 'Y');
