@@ -23,7 +23,8 @@
 		?>
 			<!-- Calendar Scripts  =============================-->
 			<script src=<?php echo URL::base()."/scripts/fullcalendar.min.js" ?>></script>
-			<script src=<?php echo URL::base()."/scripts/fullcalendar-custom.js" ?>></script>
+			<!--<script src=<?php echo URL::base()."/scripts/fullcalendar-custom.js" ?>></script>-->
+			<script src=<?php echo URL::base()."/scripts/custom/calendar.js" ?>></script>
 		<?php
 		}
 		?>

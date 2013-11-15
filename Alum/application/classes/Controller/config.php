@@ -5,9 +5,6 @@ class Controller_Config extends Controller {
 	public function action_index()
 	{
 		$view=View::factory('config');
-		//$view->_title = Helpers_Const::APPNAME.' - Inicio';
-		//$view->_menuid = Helpers_Const::MENUINICIOID;
-		//$view->_menutitle = Helpers_Const::MENUINICIOTITLE;
 		$view->_configs = Helpers_Configs::get();
 		$this->response->body($view->render());
 	}
@@ -60,7 +57,6 @@ class Controller_Config extends Controller {
 			
 			Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_CONFIGDELETE, $_POST['configkey']);
 			
-			//echo json_encode('success');
 			echo URL::base().Route::get('msg')->uri(array('controller' => 'config', 'action' => 'index',
 				'msgtype' => 'alert-success', 'msgtext' => 'Configuracion eliminada con exito.'));
 		}
