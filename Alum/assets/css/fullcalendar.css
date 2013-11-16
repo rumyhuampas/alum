@@ -542,7 +542,7 @@ table.fc-border-separate {
 	}
 	
 .fc-event-vert .fc-event-time {
-	white-space: nowrap;
+	white-space: normal; /********************JLB****************************/
 	font-size: 10px;
 	}
 

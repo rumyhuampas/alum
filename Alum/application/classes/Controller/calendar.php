@@ -37,6 +37,19 @@ class Controller_Calendar extends Controller {
 				
 				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_EVENTMODIF, $event->Id);
 			}
+			echo $event->Id;
+		}
+	}
+	
+	public function action_deleteevent(){
+		if ($this->request->is_ajax()) {
+			$id = $_POST['eventid'];
+			if($id != ''){
+				$event = Helpers_Events::get($id);
+				$event->delete();
+				
+				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), '', Helpers_Consts::OT_EVENTDELETE, $id);
+			}
 			echo 'success';
 		}
 	}

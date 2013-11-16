@@ -62,16 +62,12 @@ jQuery(document).ready(function(){
 			copiedEventObject.start = date;
 			copiedEventObject.end = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes() + 120);
 			copiedEventObject.allDay = false;
-
-			$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
 			
 			saveevent(copiedEventObject);
 		},
 		
 		eventRender: function(event, element) {
-	        //element.find(".fc-event-time").after($("<span class=\"fc-event-icons\"></span>").html("<img class='pull-right' src='/alum/assets/images/EditSmall.png'/>"));
-	        element.find(".fc-event-time").append("<img class='pull-right' src='/alum/assets/images/EditSmall.png'/>");
-	        $(".fc-event-time").css('white-space', '');
+	        element.find(".fc-event-time").append("<img height='15px' id='eventclose' eventid='" + event.id + "' class='eventclose pull-right' src='/alum/assets/images/delete.png'/>");  
 	    },
         
 		eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view) { 			
@@ -82,7 +78,40 @@ jQuery(document).ready(function(){
 		},
 	});
 	
+	$(document).on('click',"#eventclose",function () {
+		eventid = $(this).attr('eventid');      
+		$('.modal-dialog').addClass('small');
+		
+		$('#dlgtitle').text('Eliminar evento');
+		$('#dlgtext').text('¿Esta seguro?');
+		$('#dlgyesno').modal('show');
+		
+		$('#dlgbtnyes').click(function(){
+			deleteevent(eventid);
+			$(this).unbind();
+		});
+    });
+	
+	function deleteevent(event_id){
+		jQuery.post( 
+			'/alum/calendar/deleteevent/',
+		    {
+		    	eventid: event_id,
+		    },
+		    function( data ){
+				$('#dlgyesno').modal('hide');
+				jQuery('#calendar').fullCalendar('removeEvents', event_id);   	
+	    	}
+	    );
+	}
+	
 	function saveevent(event){
+		if(event.id == undefined){
+			$('.modal-dialog').addClass('small');		
+			$('#dlginfotitle').text('Guardando');
+			$('#dlginfotext').text('Guardando evento...');
+			$('#dlginfo').modal('show');
+		}
 		jQuery.post( 
 			'/alum/calendar/saveevent/',
 		    {
@@ -92,27 +121,33 @@ jQuery(document).ready(function(){
 		    	end: event.end
 		    },
 		    function( data ){
-		    	
+		    	event.id = data;
+		    	$('#calendar').fullCalendar('renderEvent', event, true);
+		    	$('#dlginfo').modal('hide');
 	    	}
 	    );
+	}	
+	
+	function loadevents(){
+		jQuery.post( 
+			'/alum/calendar/getevents/',
+		    //{ IdCerda: idcerda },
+		    function( events ){
+		    	events = JSON.parse(events);
+		    	console.log(events);
+	    		jQuery.each(events, function(i, event){
+					var eventObject = event;
+			    	var originalEventObject = eventObject;
+					// we need to copy it, so that multiple events don't have a reference to the same object
+					var copiedEventObject = jQuery.extend({}, originalEventObject);
+					copiedEventObject.allDay = false;
+					
+					jQuery('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+				});
+		    }
+		);
 	}
 	
-	jQuery.post( 
-		'/alum/calendar/getevents/',
-	    //{ IdCerda: idcerda },
-	    function( events ){
-	    	events = JSON.parse(events);
-	    	console.log(events);
-    		jQuery.each(events, function(i, event){
-				var eventObject = event;
-		    	var originalEventObject = eventObject;
-				// we need to copy it, so that multiple events don't have a reference to the same object
-				var copiedEventObject = jQuery.extend({}, originalEventObject);
-				copiedEventObject.allDay = false;
-				
-				jQuery('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-			});
-	    }
-	);
+	loadevents();
 });
 	    
