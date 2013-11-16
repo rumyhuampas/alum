@@ -18,6 +18,24 @@
 @import url('bootstrap-markdown.min.css');
 @import url('bootstrap-progressbar.css');
 
+#loadingframe
+{ 
+ 	position: fixed; left: 0px; right: 0px; top: 0px; bottom: 0px; 
+ 	background: #fff !important;
+ 	/*background: #fff url(../images/loaders/loader6.gif) no-repeat; background-position: center center;*/
+	z-index: 10000; /* Higher than anything else in the document */
+}
+ 
+#loadingtitle
+{ 
+ 	position:relative;
+    top:50%;
+    width: 100%;
+    text-align: center;
+    /*margin-top: 10px;*/
+   font-size: 20px;
+}
+
 body {
     background-color: #eeeff2;
     font-family: 'Lato', Helvetica, Arial, sans-serif !important;
@@ -1081,7 +1099,7 @@ h3.panel-title>span>a {
 .fc-event {
     border: 1px solid #93d0ea !important;
     background-color: #93d0ea !important;
-    color: #FFF !important;
+    color: #404040 !important;
     font-size: .85em;
     cursor: default;
 }
@@ -1631,10 +1649,17 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
     margin-left: 0;
 }
 @media screen and (min-width:768px) {
-    .modal-dialog {
+.modal-dialog {
     right: auto;
     left: 50%;
     width: 600px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.modal-dialog.small{
+    right: auto;
+    left: 50%;
+    width: 300px;
     padding-top: 30px;
     padding-bottom: 30px;
 }

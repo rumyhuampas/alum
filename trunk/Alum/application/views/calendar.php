@@ -47,7 +47,8 @@
 					</div>
 				</div>
 				
-				<div id="dialog" title="" style="display:none;">Are you sure want to delete it?</div>
+				<?php include Kohana::find_file('views', '_dlgyesno'); ?>
+				<?php include Kohana::find_file('views', '_dlginfo'); ?>
 	
 			</div><!-- /Main Content  @7 -->
 	

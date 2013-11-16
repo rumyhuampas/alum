@@ -31,7 +31,8 @@ class Helpers_Consts {
 	const OTIMG_POSTDELETE = '/assets/images/Bin.png';
 	const OTIMG_CREATE = '/assets/images/Add.png';
 	const OTIMG_MODIF = '/assets/images/Edit.png';
-	const OTIMG_DELETE = '/assets/images/Bin.png';
+	const OTIMG_BIN = '/assets/images/Bin.png';
+	const OTIMG_DELETE = '/assets/images/Delete.png';
 	const OTIMG_REACT = '/assets/images/Undo.png';
 	
 	public static function getAuditIcon($type){
@@ -46,15 +47,21 @@ class Helpers_Consts {
 				break;
 			case self::OT_MODIF: return self::OTIMG_MODIF;
 				break;
-			case self::OT_DELETE: return self::OTIMG_DELETE;
+			case self::OT_DELETE: return self::OTIMG_BIN;
 				break;
 			case self::OT_REACT: return self::OTIMG_REACT;
 				break;
 			case self::OT_CONFIGCREATE: return self::OTIMG_CREATE;
 				break;
-			case self::OT_CONFIGDELETE: return self::OTIMG_DELETE;
+			case self::OT_CONFIGDELETE: return self::OTIMG_BIN;
 				break;
 			case self::OT_CONFIGMODIF: return self::OTIMG_MODIF;
+				break;
+			case self::OT_EVENTCREATE: return self::OTIMG_CREATE;
+				break;
+			case self::OT_EVENTDELETE: return self::OTIMG_DELETE;
+				break;
+			case self::OT_EVENTMODIF: return self::OTIMG_MODIF;
 				break;
 		}
 	}
@@ -77,9 +84,15 @@ class Helpers_Consts {
 				break;
 			case self::OT_CONFIGCREATE: return 'Configuracion creada';
 				break;
-			case self::OT_CONFIGDELETE: return 'Configuracion Eliminada';
+			case self::OT_CONFIGDELETE: return 'Configuracion eliminada';
 				break;
 			case self::OT_CONFIGMODIF: return 'Configuracion modificada';
+				break;
+			case self::OT_EVENTCREATE: return 'Evento creado';
+				break;
+			case self::OT_EVENTDELETE: return 'Evento eliminado';
+				break;
+			case self::OT_EVENTMODIF: return 'Evento modificado';
 				break;
 		}
 	}
@@ -105,6 +118,12 @@ class Helpers_Consts {
 			case self::OT_CONFIGDELETE: return $audit->Info;
 				break;
 			case self::OT_CONFIGMODIF: return Helpers_Configs::get($audit->Info)->Key;
+				break;
+			case self::OT_EVENTCREATE: return Helpers_Students::get(Helpers_Events::get($audit->Info)->StudentId)->Name;
+				break;
+			case self::OT_EVENTDELETE: return $audit->Info;
+				break;
+			case self::OT_EVENTMODIF: return Helpers_Students::get(Helpers_Events::get($audit->Info)->StudentId)->Name;
 				break;
 		}
 	}
