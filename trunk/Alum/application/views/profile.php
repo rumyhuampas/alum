@@ -69,7 +69,7 @@
 												echo '<div class="button-group btn-group-justified">';
 													echo Form::hidden('userId', $_user->Id);
 													echo Form::hidden('userIsStudent', $_userIsStudent);
-													echo Form::button('btnsave', 'Enviar', array('class' => 'btn btn-success', 'id' => 'btnsave', 'style' => 'width:100%;')); 
+													echo Form::button('btnsave', 'Postear', array('class' => 'btn btn-success', 'id' => 'btnsave', 'style' => 'width:100%;')); 
 												echo '</div>';
 											echo '</div>';
 											echo Form::close();
