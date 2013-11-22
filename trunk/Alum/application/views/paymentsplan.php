@@ -30,38 +30,47 @@
 							<div class="panel-body">
 								<?php
 								$now = new DateTime();
-								for($i=1;$i<7;$i++){?>
+								$now->modify('-6 month')->format('m-Y');
+								for($i=1;$i<18;$i++){?>
 									<div class="col-md-4">
 										<div class="panel panel-form">
 											<div class="panel-heading">
 												<div class="row">
 													<h3 class="panel-title">
-													<?php echo $now->modify('+1 month')->format('m-Y'); ?>
+													<?php
+													echo $now->modify('+1 month')->format('m-Y');
+													?>
 													</h3>
 												</div>
 											</div>
 											<div>
-												<form role="form" class="form-horizontal">
+												<form role="form" class="form-horizontal" name="formid"<?php echo $i; ?>>
 													<div class="form-group">
-														<label class="col-lg-4 control-label" for="inputEmail1">Plan de pago</label>
+														<label class="col-lg-4 control-label">Plan de pago</label>
 														<div class="col-lg-8">
-															<div class="radio">
+															<div class="radio checked">
 																<label>
-																	<input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios">
+																	<input type="radio" value="month" id="radiomonth" name="optionsRadios">
 																	Mensual
 																</label>
 															</div>
 															<div class="radio">
 																<label>
-																	<input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">
+																	<input type="radio" value="class" id="radioclass" name="optionsRadios">
 																	Por clase
 																</label>
 															</div>
-															<div class="radio">
+															<div class="radio radiosubject">
 																<label>
-																	<input type="radio" value="option3" id="optionsRadios3" name="optionsRadios">
+																	<?php echo Form::input('optionsRadios', '', array('type' => 'radio', 'value' => 'subject', 'id' => 'radiosubject', 'formid' => $i)); ?>
 																	Por materia
 																</label>
+															</div>
+														</div>
+														<div class="form-group hidden" name="formid"<?php echo $i; ?>>
+															<label class="col-lg-4 control-label">Materias</label>
+															<div class="col-lg-5">
+																<?php echo Form::select('materias', Helpers_Combos::getRange(1,20),'', array('id' => 'materias', 'class' => 'form-control', 'formid' => $i)); ?>
 															</div>
 														</div>
 													</div>

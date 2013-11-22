@@ -25,4 +25,12 @@ class Helpers_Combos {
 		}
 		return $years;
 	}
+	
+	public static function getRange($min, $max){
+		$range = array(1=>$min);
+		for($i=$min;$i<=$max;$i++){
+			array_push($range, $i);	
+		}
+		return $range;
+	}
 }
