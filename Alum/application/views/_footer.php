@@ -9,6 +9,17 @@
 		<script src=<?php echo URL::base()."/scripts/flatui-checkbox.js" ?>></script>
 		<script src=<?php echo URL::base()."/scripts/flatui-radio.js" ?>></script>
 		
+		<!--Added for paymentplans page 
+		<script src=<?php echo URL::base()."/scripts/bootstrap-editable.min.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/bootstrap-datetimepicker.min.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/bootstrap-editable-custom.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/jquery.autosize.min.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/jquery.hotkeys.min.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/bootstrap-colorpicker.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/bootstrap-wysiwyg.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/bootstrap-markdown.js" ?>></script>
+		<script src=<?php echo URL::base()."/scripts/forms.js" ?>></script>-->
+		
 		<script src=<?php echo URL::base()."/scripts/jquery.tagsinput.js" ?>></script>
 		<script src=<?php echo URL::base()."/scripts/jquery.placeholder.js" ?>></script>
 		<script src=<?php echo URL::base()."/scripts/bootstrap-typeahead.js" ?>></script>
@@ -55,9 +66,18 @@
 		<?php
 		if(Request::current()->controller() == 'Config'){
 		?>
-			<!-- Profile Scripts-->
+			<!-- Config Scripts-->
 			<script src=<?php echo URL::base()."/scripts/jquery.validate.min.js" ?>></script>
 			<script src=<?php echo URL::base()."/scripts/custom/config.js" ?>></script>
+		<?php
+		}
+		?>
+		
+		<?php
+		if(Request::current()->controller() == 'Paymentsplan'){
+		?>
+			<!-- PaymentsPlans Scripts-->
+			<script src=<?php echo URL::base()."/scripts/custom/paymentsplans.js" ?>></script>
 		<?php
 		}
 		?>
