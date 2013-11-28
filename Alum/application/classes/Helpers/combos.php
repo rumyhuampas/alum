@@ -33,4 +33,20 @@ class Helpers_Combos {
 		}
 		return $range;
 	}
+	
+	public static function getPaymentsMonth($amount){
+		$now = new DateTime();
+		$months = array($now->format('m-Y'));
+		for($i=0;$i<=$amount;$i++){
+			$now->modify('+1 month');
+			array_push($months, $now->format('m-Y'));	
+		}
+		return $months;
+	}
+	
+	public static function getPayments(){
+		return array(Helpers_Consts::PAY_MONTH => Helpers_Consts::PAY_MONTH, 
+			Helpers_Consts::PAY_CLASS => Helpers_Consts::PAY_CLASS, 
+			Helpers_Consts::PAY_SUBJECT => Helpers_Consts::PAY_SUBJECT);
+	}
 }

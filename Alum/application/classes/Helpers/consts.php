@@ -35,6 +35,11 @@ class Helpers_Consts {
 	const OTIMG_DELETE = '/assets/images/Delete.png';
 	const OTIMG_REACT = '/assets/images/Undo.png';
 	
+	/******** PAYMENTS *********/
+	const PAY_MONTH = 'MENSUAL';
+	const PAY_CLASS = 'POR CLASE';
+	const PAY_SUBJECT = 'POR MATERIA';
+	
 	public static function getAuditIcon($type){
 		switch($type){
 			case self::OT_LOGIN: return self::OTIMG_LOGIN;
