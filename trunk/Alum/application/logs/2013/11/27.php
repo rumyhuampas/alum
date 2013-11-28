@@ -1,0 +1,68 @@
+<?php defined('SYSPATH') OR die('No direct script access.'); ?>
+
+2013-11-27 23:21:25 --- CRITICAL: ErrorException [ 4096 ]: Argument 2 passed to Kohana_Form::select() must be of the type array, string given, called in C:\xampp\htdocs\Alum\application\views\paymentsplan.php on line 37 and defined ~ SYSPATH\classes\Kohana\Form.php [ 252 ] in C:\xampp\htdocs\Alum\system\classes\Kohana\Form.php:252
+2013-11-27 23:21:25 --- DEBUG: #0 C:\xampp\htdocs\Alum\system\classes\Kohana\Form.php(252): Kohana_Core::error_handler(4096, 'Argument 2 pass...', 'C:\xampp\htdocs...', 252, Array)
+#1 C:\xampp\htdocs\Alum\application\views\paymentsplan.php(37): Kohana_Form::select('payment', '', Array, Array)
+#2 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(61): include('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\xampp\htdocs...', Array)
+#4 C:\xampp\htdocs\Alum\application\classes\Controller\paymentsplan.php(10): Kohana_View->render()
+#5 C:\xampp\htdocs\Alum\system\classes\Kohana\Controller.php(84): Controller_PaymentsPlan->action_index()
+#6 [internal function]: Kohana_Controller->execute()
+#7 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_PaymentsPlan))
+#8 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#9 C:\xampp\htdocs\Alum\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#10 C:\xampp\htdocs\Alum\index.php(118): Kohana_Request->execute()
+#11 {main} in C:\xampp\htdocs\Alum\system\classes\Kohana\Form.php:252
+2013-11-27 23:29:43 --- CRITICAL: ErrorException [ 4096 ]: Object of class Database_MySQL_Result could not be converted to string ~ APPPATH\views\paymentsplan.php [ 59 ] in C:\xampp\htdocs\Alum\application\views\paymentsplan.php:59
+2013-11-27 23:29:43 --- DEBUG: #0 C:\xampp\htdocs\Alum\application\views\paymentsplan.php(59): Kohana_Core::error_handler(4096, 'Object of class...', 'C:\xampp\htdocs...', 59, Array)
+#1 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(61): include('C:\xampp\htdocs...')
+#2 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\xampp\htdocs...', Array)
+#3 C:\xampp\htdocs\Alum\application\classes\Controller\paymentsplan.php(10): Kohana_View->render()
+#4 C:\xampp\htdocs\Alum\system\classes\Kohana\Controller.php(84): Controller_PaymentsPlan->action_index()
+#5 [internal function]: Kohana_Controller->execute()
+#6 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_PaymentsPlan))
+#7 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#8 C:\xampp\htdocs\Alum\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#9 C:\xampp\htdocs\Alum\index.php(118): Kohana_Request->execute()
+#10 {main} in C:\xampp\htdocs\Alum\application\views\paymentsplan.php:59
+2013-11-27 23:53:25 --- CRITICAL: ErrorException [ 2 ]: Illegal offset type ~ APPPATH\classes\Helpers\combos.php [ 39 ] in C:\xampp\htdocs\Alum\application\classes\Helpers\combos.php:39
+2013-11-27 23:53:25 --- DEBUG: #0 C:\xampp\htdocs\Alum\application\classes\Helpers\combos.php(39): Kohana_Core::error_handler(2, 'Illegal offset ...', 'C:\xampp\htdocs...', 39, Array)
+#1 C:\xampp\htdocs\Alum\application\views\paymentsplan.php(37): Helpers_Combos::getPaymentsMonth(12)
+#2 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(61): include('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\xampp\htdocs...', Array)
+#4 C:\xampp\htdocs\Alum\application\classes\Controller\paymentsplan.php(10): Kohana_View->render()
+#5 C:\xampp\htdocs\Alum\system\classes\Kohana\Controller.php(84): Controller_PaymentsPlan->action_index()
+#6 [internal function]: Kohana_Controller->execute()
+#7 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_PaymentsPlan))
+#8 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#9 C:\xampp\htdocs\Alum\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#10 C:\xampp\htdocs\Alum\index.php(118): Kohana_Request->execute()
+#11 {main} in C:\xampp\htdocs\Alum\application\classes\Helpers\combos.php:39
+2013-11-27 23:53:41 --- CRITICAL: ErrorException [ 4096 ]: Object of class DateTime could not be converted to string ~ SYSPATH\classes\Kohana\HTML.php [ 71 ] in C:\xampp\htdocs\Alum\system\classes\Kohana\HTML.php:71
+2013-11-27 23:53:41 --- DEBUG: #0 C:\xampp\htdocs\Alum\system\classes\Kohana\HTML.php(71): Kohana_Core::error_handler(4096, 'Object of class...', 'C:\xampp\htdocs...', 71, Array)
+#1 C:\xampp\htdocs\Alum\system\classes\Kohana\Form.php(332): Kohana_HTML::chars(Object(DateTime), false)
+#2 C:\xampp\htdocs\Alum\application\views\paymentsplan.php(37): Kohana_Form::select('month', Array, '', Array)
+#3 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(61): include('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\xampp\htdocs...', Array)
+#5 C:\xampp\htdocs\Alum\application\classes\Controller\paymentsplan.php(10): Kohana_View->render()
+#6 C:\xampp\htdocs\Alum\system\classes\Kohana\Controller.php(84): Controller_PaymentsPlan->action_index()
+#7 [internal function]: Kohana_Controller->execute()
+#8 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_PaymentsPlan))
+#9 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#10 C:\xampp\htdocs\Alum\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#11 C:\xampp\htdocs\Alum\index.php(118): Kohana_Request->execute()
+#12 {main} in C:\xampp\htdocs\Alum\system\classes\Kohana\HTML.php:71
+2013-11-27 23:54:57 --- CRITICAL: ErrorException [ 4096 ]: Object of class DateTime could not be converted to string ~ SYSPATH\classes\Kohana\HTML.php [ 71 ] in C:\xampp\htdocs\Alum\system\classes\Kohana\HTML.php:71
+2013-11-27 23:54:57 --- DEBUG: #0 C:\xampp\htdocs\Alum\system\classes\Kohana\HTML.php(71): Kohana_Core::error_handler(4096, 'Object of class...', 'C:\xampp\htdocs...', 71, Array)
+#1 C:\xampp\htdocs\Alum\system\classes\Kohana\Form.php(332): Kohana_HTML::chars(Object(DateTime), false)
+#2 C:\xampp\htdocs\Alum\application\views\paymentsplan.php(37): Kohana_Form::select('month', Array, '', Array)
+#3 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(61): include('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\Alum\system\classes\Kohana\View.php(348): Kohana_View::capture('C:\xampp\htdocs...', Array)
+#5 C:\xampp\htdocs\Alum\application\classes\Controller\paymentsplan.php(10): Kohana_View->render()
+#6 C:\xampp\htdocs\Alum\system\classes\Kohana\Controller.php(84): Controller_PaymentsPlan->action_index()
+#7 [internal function]: Kohana_Controller->execute()
+#8 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_PaymentsPlan))
+#9 C:\xampp\htdocs\Alum\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#10 C:\xampp\htdocs\Alum\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#11 C:\xampp\htdocs\Alum\index.php(118): Kohana_Request->execute()
+#12 {main} in C:\xampp\htdocs\Alum\system\classes\Kohana\HTML.php:71

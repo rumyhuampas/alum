@@ -16,10 +16,11 @@
 				<!-- Form Horizontal -->
 				<div class="row">
 					<div class="col-md-12">
+						
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h3 class="panel-title">
-									Plan de pagos
+									Plan de pagos - Alumno: <?php echo $_alum->Name; ?>
 									<span class="pull-right">
 										<a  href="#" class="panel-minimize"><i class="icon-chevron-up"></i></a>
 										<a  href="#"  class="panel-settings"><i class="icon-cog"></i></a>
@@ -27,63 +28,77 @@
 									</span>
 								</h3>
 							</div>
+							
 							<div class="panel-body">
-								<?php
-								$now = new DateTime();
-								$now->modify('-6 month')->format('m-Y');
-								for($i=1;$i<18;$i++){?>
-									<div class="col-md-4">
-										<div class="panel panel-form">
-											<div class="panel-heading">
-												<div class="row">
-													<h3 class="panel-title">
-													<?php
-													echo $now->modify('+1 month')->format('m-Y');
-													?>
-													</h3>
-												</div>
-											</div>
-											<div>
-												<form role="form" class="form-horizontal" name="formid"<?php echo $i; ?>>
-													<div class="form-group">
-														<label class="col-lg-4 control-label">Plan de pago</label>
-														<div class="col-lg-8">
-															<div class="radio checked">
-																<label>
-																	<input type="radio" value="month" id="radiomonth" name="optionsRadios">
-																	Mensual
-																</label>
-															</div>
-															<div class="radio">
-																<label>
-																	<input type="radio" value="class" id="radioclass" name="optionsRadios">
-																	Por clase
-																</label>
-															</div>
-															<div class="radio radiosubject">
-																<label>
-																	<?php echo Form::input('optionsRadios', '', array('type' => 'radio', 'value' => 'subject', 'id' => 'radiosubject', 'formid' => $i)); ?>
-																	Por materia
-																</label>
-															</div>
-														</div>
-														<div class="form-group hidden" name="formid"<?php echo $i; ?>>
-															<label class="col-lg-4 control-label">Materias</label>
-															<div class="col-lg-5">
-																<?php echo Form::select('materias', Helpers_Combos::getRange(1,20),'', array('id' => 'materias', 'class' => 'form-control', 'formid' => $i)); ?>
-															</div>
-														</div>
-													</div>
-												</form>
-											</div>
-											<div class="panel-footer">
-												<a class="btn btn-info btn-block" href="#">Guardar</a>
-											</div>
-										</div>				
-									</div>
-									<?php
-								}
+								<?php 
+								echo Form::open('paymentsplan/add', array('method' => 'POST', 'id' => 'addpayment', 'class' => 'form-vertical'));
+									echo "<div class='form-group col-lg-3'>";
+										echo Form::label('month', 'Mes', array('class' => 'sr-only'));
+										echo Form::select('month', Helpers_Combos::getPaymentsMonth(12), '', array('type' => 'text', 'id' => 'month', 'class' => 'form-control'));
+									echo "</div>";
+									echo "<div class='form-group col-lg-3'>";
+										echo Form::label('payment', 'Tipo de pago', array('class' => 'sr-only'));
+										echo Form::select('payment', Helpers_Combos::getPayments(), '', array('type' => 'text', 'id' => 'payment', 'class' => 'form-control'));
+									echo "</div>";
+									echo "<div class='form-group col-lg-3'>";
+										echo Form::label('amount', 'Materias', array('class' => 'sr-only'));
+										echo Form::select('amount', Helpers_Combos::getRange(1, 20), '', array('type' => 'text', 'id' => 'amount', 'class' => 'form-control'));
+									echo "</div>";
+									echo Form::button('savepayment', 'Agregar', array('class' => 'col-lg-2 btn btn-default'));
+								echo Form::close();
 								?>
+								
+								<table id="studenttable" class="table users-table table-condensed table-hover ">
+									<thead>
+										<tr>
+											<th class="visible-lg">#</th>
+											<th class="visible-lg">Mes</th>
+											<th class="visible-lg">Tipo de pago</th>
+											<th class="visible-lg">Materias</th>
+											<th>&nbsp;</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+					                    if(isset($_paymentsplans)){
+					                    	foreach($_paymentsplans as $payment){
+					                    		echo "<tr>";
+					                    			echo "<td>".$payment->Id."</td>";
+													echo "<td>".date("m-Y", strtotime($payment->Month))."</td>";
+													echo "<td>".$payment->PaymentType."</td>";
+													echo "<td>".$payment->Amount."</td>";
+													echo '<td>';
+													if($alumno->Active == 'Y'){
+														echo Form::open('abmalum/show', array('method' => 'POST', 'class' => 'col-lg-1'));
+					                            		echo Form::hidden('alumid', $alumno->Id);
+														echo "<button class='btn btn-info' type='button' name='showalum' title='Perfil'><i class='icon-eye-open'></i></button>";
+														echo Form::close();
+														echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-1'));
+					                            		echo Form::hidden('alumid', $alumno->Id);
+														echo "<button class='btn btn-info' type='button' name='editalum' title='Editar'><i class='icon-edit'></i></button>";
+														echo Form::close();
+														echo Form::open('paymentsplan/index', array('method' => 'POST', 'class' => 'col-lg-1'));
+					                            		echo Form::hidden('alumid', $alumno->Id);
+														echo "<button class='btn btn-info' type='button' name='editalum' title='Plan de pagos'><i class='icon-usd'></i></button>";
+														echo Form::close();
+														echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-1'));
+					                            		echo Form::hidden('alumid', $alumno->Id);
+														echo "<button class='btn btn-info' type='button' name='deletealum' title='Eliminar'><i class='icon-remove'></i></button>";
+														echo Form::close();
+													}
+													else{
+														echo Form::open('abmalum/reactivate', array('method' => 'POST', 'class' => 'col-lg-1'));
+					                            		echo Form::hidden('alumid', $alumno->Id);
+														echo "<button class='btn btn-info' type='button' name='reactivatealum' title='Reactivar'><i class='icon-ok'></i></button>";
+														echo Form::close();
+													}	
+													echo '</td>';
+												echo "</tr>";
+					                    	}
+					                    }
+					                    ?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

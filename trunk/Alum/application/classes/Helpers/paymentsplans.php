@@ -13,7 +13,7 @@ class Helpers_PaymentsPlans {
 	
 	public static function getbyStudent($alumId){
 		return ORM::factory('paymentsplan')
-			->where('StudentId', '=', $alumid)
+			->where('StudentId', '=', $alumId)
 			->find_all();
 	}
 }
