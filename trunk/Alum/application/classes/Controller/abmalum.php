@@ -67,6 +67,12 @@ class Controller_ABMAlum extends Controller {
 	
 	public function action_payment(){
 		$alumid = $_POST['alumid'];
+		HTTP::redirect(Route::get('default')->uri(array('controller' => 'payments', 'action' => 'index',
+			'id' => $alumid)));
+	}
+	
+	public function action_paymentplan(){
+		$alumid = $_POST['alumid'];
 		HTTP::redirect(Route::get('default')->uri(array('controller' => 'paymentsplan', 'action' => 'index',
 			'id' => $alumid)));
 	}
