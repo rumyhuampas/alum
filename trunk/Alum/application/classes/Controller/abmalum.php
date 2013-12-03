@@ -35,7 +35,7 @@ class Controller_ABMAlum extends Controller {
 				$std->Active = 'Y';
 				$std->create();
 				
-				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_CREATE);
+				Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_STDCREATE);
 				
 				HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 					'msgtype' => 'alert-success', 'msgtext' => 'Alumno agregado con exito.')));
@@ -64,6 +64,12 @@ class Controller_ABMAlum extends Controller {
 				'id' => $alumid)));
 		}	
 	}
+	
+	public function action_payment(){
+		$alumid = $_POST['alumid'];
+		HTTP::redirect(Route::get('default')->uri(array('controller' => 'paymentsplan', 'action' => 'index',
+			'id' => $alumid)));
+	}
 
 	public function action_edit()
 	{
@@ -90,7 +96,7 @@ class Controller_ABMAlum extends Controller {
 			$std->ModifiedOn = DB::expr('Now()');
 			$std->update();
 			
-			Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_MODIF);
+			Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_STDMODIF);
 			
 			HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 				'msgtype' => 'alert-success', 'msgtext' => 'Alumno modificado con exito.')));
@@ -104,7 +110,7 @@ class Controller_ABMAlum extends Controller {
 		$std->ModifiedOn = DB::expr('Now()');
 		$std->update();
 		
-		Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_DELETE);
+		Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_STDDELETE);
 		
 		HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 			'msgtype' => 'alert-success', 'msgtext' => 'Alumno eliminado con exito.')));
@@ -117,7 +123,7 @@ class Controller_ABMAlum extends Controller {
 		$std->ModifiedOn = DB::expr('Now()');
 		$std->update();
 		
-		Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_REACT);
+		Helpers_Audits::addAudit(Helpers_Session::get(Helpers_Consts::SS_CURRENTUSERID), $std->Id, Helpers_Consts::OT_STDREACT);
 		
 		HTTP::redirect(Route::get('msg')->uri(array('controller' => 'abmalum', 'action' => 'index',
 			'msgtype' => 'alert-success', 'msgtext' => 'Alumno reactivado con exito.')));

@@ -32,6 +32,7 @@
 							<div class="panel-body">
 								<?php 
 								echo Form::open('paymentsplan/add', array('method' => 'POST', 'id' => 'addpayment', 'class' => 'form-vertical'));
+									echo Form::hidden('alumid', $_alum->Id);
 									echo "<div class='form-group col-lg-3'>";
 										echo Form::label('month', 'Mes', array('class' => 'sr-only'));
 										echo Form::select('month', Helpers_Combos::getPaymentsMonth(12), '', array('type' => 'text', 'id' => 'month', 'class' => 'form-control'));
@@ -48,7 +49,7 @@
 								echo Form::close();
 								?>
 								
-								<table id="studenttable" class="table users-table table-condensed table-hover ">
+								<table id="paymenttable" class="table users-table table-condensed table-hover ">
 									<thead>
 										<tr>
 											<th class="visible-lg">#</th>
@@ -64,34 +65,14 @@
 					                    	foreach($_paymentsplans as $payment){
 					                    		echo "<tr>";
 					                    			echo "<td>".$payment->Id."</td>";
-													echo "<td>".date("m-Y", strtotime($payment->Month))."</td>";
+													echo "<td>".$payment->Month."</td>";
 													echo "<td>".$payment->PaymentType."</td>";
 													echo "<td>".$payment->Amount."</td>";
 													echo '<td>';
-													if($alumno->Active == 'Y'){
-														echo Form::open('abmalum/show', array('method' => 'POST', 'class' => 'col-lg-1'));
-					                            		echo Form::hidden('alumid', $alumno->Id);
-														echo "<button class='btn btn-info' type='button' name='showalum' title='Perfil'><i class='icon-eye-open'></i></button>";
-														echo Form::close();
-														echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-1'));
-					                            		echo Form::hidden('alumid', $alumno->Id);
-														echo "<button class='btn btn-info' type='button' name='editalum' title='Editar'><i class='icon-edit'></i></button>";
-														echo Form::close();
-														echo Form::open('paymentsplan/index', array('method' => 'POST', 'class' => 'col-lg-1'));
-					                            		echo Form::hidden('alumid', $alumno->Id);
-														echo "<button class='btn btn-info' type='button' name='editalum' title='Plan de pagos'><i class='icon-usd'></i></button>";
-														echo Form::close();
-														echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-1'));
-					                            		echo Form::hidden('alumid', $alumno->Id);
-														echo "<button class='btn btn-info' type='button' name='deletealum' title='Eliminar'><i class='icon-remove'></i></button>";
-														echo Form::close();
-													}
-													else{
-														echo Form::open('abmalum/reactivate', array('method' => 'POST', 'class' => 'col-lg-1'));
-					                            		echo Form::hidden('alumid', $alumno->Id);
-														echo "<button class='btn btn-info' type='button' name='reactivatealum' title='Reactivar'><i class='icon-ok'></i></button>";
-														echo Form::close();
-													}	
+														echo Form::open('paymentsplan/delete', array('method' => 'POST', 'class' => 'col-lg-1'));
+					                            		echo Form::hidden('paymentid', $payment->Id);
+														echo "<button class='btn btn-info' type='button' name='deletepayment' title='Eliminar'><i class='icon-remove'></i></button>";
+														echo Form::close();	
 													echo '</td>';
 												echo "</tr>";
 					                    	}
@@ -103,6 +84,8 @@
 						</div>
 					</div>
 				</div>
+				
+				<?php include Kohana::find_file('views', '_dlgyesno'); ?>
 	
 			</div><!-- /Main Content  @7 -->
 	

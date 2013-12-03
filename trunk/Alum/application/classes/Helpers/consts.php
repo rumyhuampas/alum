@@ -15,16 +15,18 @@ class Helpers_Consts {
 	const OT_LOGIN = 'LOGIN';
 	const OT_POST = 'POST';
 	const OT_POSTDELETE = 'POST DELETE';
-	const OT_CREATE = 'CREACION';
-	const OT_MODIF = 'MODIFICACION';
-	const OT_DELETE = 'ELIMINACION';
-	const OT_REACT = 'REACTIVACION';
+	const OT_STDCREATE = 'ALUMNO CREACION';
+	const OT_STDMODIF = 'ALUMNO MODIFICACION';
+	const OT_STDDELETE = 'ALUMNO ELIMINACION';
+	const OT_STDREACT = 'ALUMNO REACTIVACION';
 	const OT_CONFIGCREATE = 'CONFIG CREACION';
 	const OT_CONFIGDELETE = 'CONFIG ELIMINACION';
 	const OT_CONFIGMODIF = 'CONFIG MODIFICACION';
 	const OT_EVENTCREATE = 'EVENTO CREACION';
 	const OT_EVENTDELETE = 'EVENTO ELIMINACION';
 	const OT_EVENTMODIF = 'EVENTO MODIFICACION';
+	const OT_PPCREATE = 'PLAN PAGO CREACION';
+	const OT_PPDELETE = 'PLAN PAGO ELIMINACION';
 	
 	const OTIMG_LOGIN = '/assets/images/Key.png';
 	const OTIMG_POST = '/assets/images/Pencil.png';
@@ -48,13 +50,13 @@ class Helpers_Consts {
 				break;
 			case self::OT_POSTDELETE: return self::OTIMG_POSTDELETE;
 				break;
-			case self::OT_CREATE: return self::OTIMG_CREATE;
+			case self::OT_STDCREATE: return self::OTIMG_CREATE;
 				break;
-			case self::OT_MODIF: return self::OTIMG_MODIF;
+			case self::OT_STDMODIF: return self::OTIMG_MODIF;
 				break;
-			case self::OT_DELETE: return self::OTIMG_BIN;
+			case self::OT_STDDELETE: return self::OTIMG_BIN;
 				break;
-			case self::OT_REACT: return self::OTIMG_REACT;
+			case self::OT_STDREACT: return self::OTIMG_REACT;
 				break;
 			case self::OT_CONFIGCREATE: return self::OTIMG_CREATE;
 				break;
@@ -68,6 +70,10 @@ class Helpers_Consts {
 				break;
 			case self::OT_EVENTMODIF: return self::OTIMG_MODIF;
 				break;
+			case self::OT_PPCREATE: return self::OTIMG_CREATE;
+				break;
+			case self::OT_PPDELETE: return self::OTIMG_DELETE;
+				break;
 		}
 	}
 	
@@ -79,13 +85,13 @@ class Helpers_Consts {
 				break;
 			case self::OT_POSTDELETE: return 'Post eliminado';
 				break;
-			case self::OT_CREATE: return 'Alumno creado';
+			case self::OT_STDCREATE: return 'Alumno creado';
 				break;
-			case self::OT_MODIF: return 'Alumno modificado';
+			case self::OT_STDMODIF: return 'Alumno modificado';
 				break;
-			case self::OT_DELETE: return 'Alumno eliminado';
+			case self::OT_STDDELETE: return 'Alumno eliminado';
 				break;
-			case self::OT_REACT: return 'Alumno reactivado';
+			case self::OT_STDREACT: return 'Alumno reactivado';
 				break;
 			case self::OT_CONFIGCREATE: return 'Configuracion creada';
 				break;
@@ -99,6 +105,10 @@ class Helpers_Consts {
 				break;
 			case self::OT_EVENTMODIF: return 'Evento modificado';
 				break;
+			case self::OT_PPCREATE: return 'Plan de pago creado';
+				break;
+			case self::OT_PPDELETE: return 'Plan de pago eliminado';
+				break;
 		}
 	}
 	
@@ -110,13 +120,13 @@ class Helpers_Consts {
 				break;
 			case self::OT_POSTDELETE: return $audit->Info;
 				break;
-			case self::OT_CREATE: return Helpers_Students::getNameResume($audit->StudentId);
+			case self::OT_STDCREATE: return Helpers_Students::getNameResume($audit->StudentId);
 				break;
-			case self::OT_MODIF: return Helpers_Students::getNameResume($audit->StudentId);
+			case self::OT_STDMODIF: return Helpers_Students::getNameResume($audit->StudentId);
 				break;
-			case self::OT_DELETE: return Helpers_Students::getNameResume($audit->StudentId);
+			case self::OT_STDDELETE: return Helpers_Students::getNameResume($audit->StudentId);
 				break;
-			case self::OT_REACT: return Helpers_Students::getNameResume($audit->StudentId);
+			case self::OT_STDREACT: return Helpers_Students::getNameResume($audit->StudentId);
 				break;
 			case self::OT_CONFIGCREATE: return Helpers_Configs::get($audit->Info)->Key;
 				break;
@@ -129,6 +139,13 @@ class Helpers_Consts {
 			case self::OT_EVENTDELETE: return $audit->Info;
 				break;
 			case self::OT_EVENTMODIF: return Helpers_Students::get(Helpers_Events::get($audit->Info)->StudentId)->Name;
+				break;
+			case self::OT_PPCREATE:
+				$pp = Helpers_PaymentsPlans::get($audit->Info);
+				$std = Helpers_Students::get($pp->StudentId);
+				return 'Alumno: '.$std->Name.' - Mes: '.$pp->Month;
+				break;
+			case self::OT_PPDELETE: return $audit->Info;
 				break;
 		}
 	}
