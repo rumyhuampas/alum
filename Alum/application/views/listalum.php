@@ -70,9 +70,9 @@
 									                            		echo Form::hidden('alumid', $alumno->Id);
 																		echo "<button class='btn btn-info' type='button' name='editalum' title='Editar'><i class='icon-edit'></i></button>";
 																		echo Form::close();
-																		echo Form::open('paymentsplan/index', array('method' => 'POST', 'class' => 'col-lg-1'));
+																		echo Form::open('abmalum/payment', array('method' => 'POST', 'class' => 'col-lg-1'));
 									                            		echo Form::hidden('alumid', $alumno->Id);
-																		echo "<button class='btn btn-info' type='button' name='editalum' title='Plan de pagos'><i class='icon-usd'></i></button>";
+																		echo "<button class='btn btn-info' type='button' name='paymentalum' title='Plan de pagos'><i class='icon-usd'></i></button>";
 																		echo Form::close();
 																		echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-1'));
 									                            		echo Form::hidden('alumid', $alumno->Id);

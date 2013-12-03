@@ -35,13 +35,17 @@ class Helpers_Combos {
 	}
 	
 	public static function getPaymentsMonth($amount){
-		$now = new DateTime();
-		$months = array($now->format('m-Y'));
+		$today = new DateTime();
+		$now = new Datetime();
+		$now->setDate($today->format('Y'),$today->format('m'),1);
+		$keys = array($now->format('Y-m'));
+		$values = array($now->format('Y-m'));
 		for($i=0;$i<=$amount;$i++){
 			$now->modify('+1 month');
-			array_push($months, $now->format('m-Y'));	
+			array_push($keys, $now->format('Y-m'));
+			array_push($values, $now->format('Y-m'));
 		}
-		return $months;
+		return array_combine($keys, $values);
 	}
 	
 	public static function getPayments(){

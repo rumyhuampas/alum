@@ -11,4 +11,16 @@ $(document).ready(function() {
 			hid.attr("disabled", "");
 		}  
 	});
+	
+	$('[name=deletepayment]').click(function(){
+		var thisform = jQuery(this).closest('form');
+		
+		$('#dlgtitle').text('Eliminar plan de pago');
+		$('#dlgtext').text('¿Esta seguro?');
+		$('#dlgyesno').modal('show');
+		
+		$('#dlgbtnyes').click(function(){
+			thisform.submit();
+		});
+	});
 });

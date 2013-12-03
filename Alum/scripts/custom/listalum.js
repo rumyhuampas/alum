@@ -7,6 +7,10 @@ $(document).ready(function() {
 		$(this).closest("form").submit();
 	});
 	
+	$('[name=paymentalum]').click(function(){
+		$(this).closest("form").submit();
+	});
+	
 	$('[name=deletealum]').click(function(){
 		var thisform = jQuery(this).closest('form');
 		
