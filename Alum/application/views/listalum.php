@@ -62,25 +62,29 @@
 																	echo "<td>".$alumno->Address."</td>";
 																	echo '<td>';
 																	if($alumno->Active == 'Y'){
-																		echo Form::open('abmalum/show', array('method' => 'POST', 'class' => 'col-lg-1'));
+																		echo Form::open('abmalum/show', array('method' => 'POST', 'style'=>'display:inline-block; padding: 3px 3px;'));
 									                            		echo Form::hidden('alumid', $alumno->Id);
 																		echo "<button class='btn btn-info' type='button' name='showalum' title='Perfil'><i class='icon-eye-open'></i></button>";
 																		echo Form::close();
-																		echo Form::open('abmalum/edit', array('method' => 'POST', 'class' => 'col-lg-1'));
+																		echo Form::open('abmalum/edit', array('method' => 'POST', 'style' => 'display:inline-block; padding: 3px 3px;'));
 									                            		echo Form::hidden('alumid', $alumno->Id);
 																		echo "<button class='btn btn-info' type='button' name='editalum' title='Editar'><i class='icon-edit'></i></button>";
 																		echo Form::close();
-																		echo Form::open('abmalum/payment', array('method' => 'POST', 'class' => 'col-lg-1'));
+																		echo Form::open('abmalum/paymentplan', array('method' => 'POST', 'style' => 'display:inline-block; padding: 3px 3px;'));
 									                            		echo Form::hidden('alumid', $alumno->Id);
-																		echo "<button class='btn btn-info' type='button' name='paymentalum' title='Plan de pagos'><i class='icon-usd'></i></button>";
+																		echo "<button class='btn btn-info' type='button' name='paymentalum' title='Plan de pagos'><i class='icon-calendar'></i></button>";
 																		echo Form::close();
-																		echo Form::open('abmalum/delete', array('method' => 'POST', 'class' => 'col-lg-1'));
+																		echo Form::open('abmalum/payment', array('method' => 'POST', 'style' => 'display:inline-block; padding: 3px 3px;'));
+									                            		echo Form::hidden('alumid', $alumno->Id);
+																		echo "<button class='btn btn-info' type='button' name='paymentalum' title='Pagos'><i class='icon-usd'></i></button>";
+																		echo Form::close();
+																		echo Form::open('abmalum/delete', array('method' => 'POST', 'style' => 'display:inline-block; padding: 3px 3px;'));
 									                            		echo Form::hidden('alumid', $alumno->Id);
 																		echo "<button class='btn btn-info' type='button' name='deletealum' title='Eliminar'><i class='icon-remove'></i></button>";
 																		echo Form::close();
 																	}
 																	else{
-																		echo Form::open('abmalum/reactivate', array('method' => 'POST', 'class' => 'col-lg-1'));
+																		echo Form::open('abmalum/reactivate', array('method' => 'POST', 'style' => 'display:inline-block; padding: 3px 3px;'));
 									                            		echo Form::hidden('alumid', $alumno->Id);
 																		echo "<button class='btn btn-info' type='button' name='reactivatealum' title='Reactivar'><i class='icon-ok'></i></button>";
 																		echo Form::close();
